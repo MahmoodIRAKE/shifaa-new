@@ -1,82 +1,117 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import FAQS from '../../constants/faq';
+import FAQSHE from '../../constants/faqHe';
+import './Faq.css';
 
 const Faq = () => {
-  const { t } = useLanguage();
-  const [activeItem, setActiveItem] = useState(-1); // Start with all closed
+  const { t, language } = useLanguage();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [expandedQuestion, setExpandedQuestion] = useState(null);
+  const questionsPerPage = 5;
 
-  const faqItems = [
-    {
-      id: 1,
-      count: "01",
-      question: t('faq.item1.question'),
-      answer: t('faq.item1.answer'),
-      readMoreLink: "/faq/ingredients"
-    },
-    {
-      id: 2,
-      count: "02",
-      question: t('faq.item2.question'),
-      answer: t('faq.item2.answer'),
-      readMoreLink: "/faq/themes"
-    },
-    {
-      id: 3,
-      count: "03",
-      question: t('faq.item3.question'),
-      answer: t('faq.item3.answer'),
-      readMoreLink: "/faq/app"
-    },
-    {
-      id: 4,
-      count: "04",
-      question: t('faq.item4.question'),
-      answer: t('faq.item4.answer'),
-      readMoreLink: "/faq/version"
-    },
-    {
-      id: 5,
-      count: "05",
-      question: t('faq.item5.question'),
-      answer: t('faq.item5.answer'),
-      readMoreLink: "/faq/tracking"
-    }
-  ];
+  // Get the correct FAQ array based on language
+  const faqData = language === 'he' ? FAQSHE : FAQS;
 
-  const toggleAccordion = (index) => {
-    setActiveItem(activeItem === index ? -1 : index);
+  // Calculate pagination
+  const totalPages = Math.ceil(faqData.length / questionsPerPage);
+  const startIndex = (currentPage - 1) * questionsPerPage;
+  const endIndex = startIndex + questionsPerPage;
+  const currentQuestions = faqData.slice(startIndex, endIndex);
+
+  const handleQuestionClick = (questionId) => {
+    setExpandedQuestion(expandedQuestion === questionId ? null : questionId);
   };
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setExpandedQuestion(null); // Close any expanded question when changing pages
+  };
+
+  useEffect(() => {
+    // Reset to first page when language changes
+    setCurrentPage(1);
+    setExpandedQuestion(null);
+  }, [language]);
+
   return (
-    <div className="col-lg-8 col-md-10 col-sm-12 mx-auto">
-      <div className="faq-wrapper">
-        <div className="section-title mb-50 text-center">
-          <p className="sub-title">{t('faq.subtitle')}</p>
-          <h2 className="title">{t('faq.title')}</h2>
-        </div>
-        <div className="faq-accordion">
-          {faqItems.map((item, index) => (
-            <div key={item.id} className={`faq-item ${activeItem === index ? 'active' : ''}`}>
-              <div className="faq-question" onClick={() => toggleAccordion(index)}>
-                <span className="count">{item.count}.</span>
-                <span className="question-text">{item.question}</span>
-                <span className={`faq-arrow ${activeItem === index ? 'rotated' : ''}`}>
-                  <i className="fas fa-chevron-down"></i>
-                </span>
-              </div>
-              <div className={`faq-answer ${activeItem === index ? 'show' : ''}`}>
-                <p>{item.answer}</p>
-                <div className="faq-read-more">
-                  <a href={item.readMoreLink} className="read-more-btn">
-                    <i className="fas fa-arrow-circle-right"></i> {t('faq.readMore')}
-                  </a>
-                </div>
-              </div>
+    <section id="faq" className="tg-faq-area" dir={language === 'he' ? 'rtl' : 'ltr'} style={{
+      marginTop: '-150px',
+    }}>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="section-title text-center mb-60">
+              <span className="sub-title faq-subtitle">{t('faq.subtitle')}</span>
+              <h2 className="title faq-title">{t('faq.title')}</h2>
             </div>
-          ))}
+          </div>
+        </div>
+        
+        <div className="row justify-content-center">
+          <div className="col-lg-10">
+            <div className="faq-wrapper">
+              {currentQuestions.map((faq) => (
+                <div key={faq.id} className="faq-item">
+                  <div 
+                    className={`faq-question ${expandedQuestion === faq.id ? 'active' : ''}`}
+                    onClick={() => handleQuestionClick(faq.id)}
+                  >
+                    <h3 className="question-text">{faq.question}</h3>
+                    <span className="toggle-icon">
+                      {expandedQuestion === faq.id ? '−' : '+'}
+                    </span>
+                  </div>
+                  <div className={`faq-answer ${expandedQuestion === faq.id ? 'expanded' : ''}`}>
+                    <p>{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="pagination-wrapper text-center mt-50">
+                <nav aria-label="FAQ pagination">
+                  <ul className="pagination">
+                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                      <button 
+                        className="page-link" 
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                      >
+                        {language === 'he' ? 'הקודם' : 'السابق'}
+                      </button>
+                    </li>
+                    
+                    {Array.from({ length: totalPages }, (_, index) => (
+                      <li key={index + 1} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                        <button 
+                          className="page-link"
+                          onClick={() => handlePageChange(index + 1)}
+                        >
+                          {index + 1}
+                        </button>
+                      </li>
+                    ))}
+                    
+                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                      <button 
+                        className="page-link" 
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                      >
+                        {language === 'he' ? 'הבא' : 'التالي'}
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
