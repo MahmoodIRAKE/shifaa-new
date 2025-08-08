@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import he from '../translations/he';
+import translations from '../translations/translations.json';
 
 const LanguageContext = createContext();
 
@@ -12,12 +12,8 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('he');
-  const [isRTL, setIsRTL] = useState(true);
-
-  const translations = {
-    he: he
-  };
+  const [language, setLanguage] = useState('ar'); // Default to Arabic
+  const [isRTL, setIsRTL] = useState(true); // Arabic is RTL
 
   const t = (key) => {
     const keys = key.split('.');
@@ -27,7 +23,16 @@ export const LanguageProvider = ({ children }) => {
       if (value && value[k]) {
         value = value[k];
       } else {
-        return key; // Return the key if translation not found
+        // Fallback to Arabic if translation not found
+        value = translations.ar;
+        for (const fallbackKey of keys) {
+          if (value && value[fallbackKey]) {
+            value = value[fallbackKey];
+          } else {
+            return key; // Return the key if translation not found
+          }
+        }
+        return value;
       }
     }
     
@@ -36,14 +41,20 @@ export const LanguageProvider = ({ children }) => {
 
   const changeLanguage = (lang) => {
     setLanguage(lang);
-    setIsRTL(lang === 'he' || lang === 'ar');
+    setIsRTL(lang === 'ar' || lang === 'he');
+  };
+
+  const toggleLanguage = () => {
+    const newLang = language === 'ar' ? 'he' : 'ar';
+    changeLanguage(newLang);
   };
 
   const value = {
     language,
     isRTL,
     t,
-    changeLanguage
+    changeLanguage,
+    toggleLanguage
   };
 
   return (

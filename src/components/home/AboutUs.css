@@ -1,0 +1,174 @@
+/* AboutUs Component Animations */
+
+/* Section Animation */
+.tg-video-area {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.tg-video-area.animate-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Content Animation */
+.tg-video-content {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.6s ease;
+}
+
+.tg-video-content.animate-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Title Animation */
+.tg-section-title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.tg-section-title.animate-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Paragraph Animations */
+.about-paragraph {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.4s ease;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+.about-paragraph.animate-paragraph {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* About Content Container */
+.about-content {
+  margin-bottom: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .about-paragraph {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .tg-video-content {
+    transform: translateX(30px);
+  }
+  
+  .about-paragraph {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tg-video-area {
+    padding: 60px 0;
+  }
+  
+  .tg-video-content {
+    transform: translateX(20px);
+  }
+  
+  .about-paragraph {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  .tg-section-title .title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tg-video-area {
+    padding: 40px 0;
+  }
+  
+  .about-paragraph {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .tg-section-title .title {
+    font-size: 20px;
+  }
+}
+
+/* RTL Support */
+.rtl .about-paragraph {
+  transform: translateX(30px);
+}
+
+.rtl .about-paragraph.animate-paragraph {
+  transform: translateX(0);
+}
+
+.rtl .tg-video-content {
+  transform: translateX(-50px);
+}
+
+.rtl .tg-video-content.animate-content {
+  transform: translateX(0);
+}
+
+/* Hover Effects */
+.about-paragraph:hover {
+  color: rgba(255, 255, 255, 1);
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}
+
+.rtl .about-paragraph:hover {
+  transform: translateX(-5px);
+}
+
+/* Animation Delays for Staggered Effect */
+.about-paragraph:nth-child(1) { transition-delay: 0.1s; }
+.about-paragraph:nth-child(2) { transition-delay: 0.2s; }
+.about-paragraph:nth-child(3) { transition-delay: 0.3s; }
+.about-paragraph:nth-child(4) { transition-delay: 0.4s; }
+.about-paragraph:nth-child(5) { transition-delay: 0.5s; }
+.about-paragraph:nth-child(6) { transition-delay: 0.6s; }
+.about-paragraph:nth-child(7) { transition-delay: 0.7s; }
+.about-paragraph:nth-child(8) { transition-delay: 0.8s; }
+.about-paragraph:nth-child(9) { transition-delay: 0.9s; }
+
+/* Smooth Scroll Behavior */
+.tg-video-area {
+  scroll-behavior: smooth;
+}
+
+/* Focus States for Accessibility */
+.about-paragraph:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .tg-video-area {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .about-paragraph {
+    opacity: 1;
+    transform: none;
+    color: black;
+  }
+}

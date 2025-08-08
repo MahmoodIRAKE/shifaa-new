@@ -6,7 +6,7 @@ import './Header.css';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-  const { isRTL, changeLanguage } = useLanguage();
+  const { isRTL, toggleLanguage, t } = useLanguage();
   const location = useLocation();
 
   // Cart items count
@@ -49,19 +49,15 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const toggleLanguage = () => {
-    changeLanguage(isRTL ? 'en' : 'he');
-  };
-
   const navigationItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Features', path: '#features' },
-    { name: 'Product', path: '#paroller' },
-    { name: 'Ingredient', path: '#ingredient' },
-    { name: 'Pricing', path: '#pricing' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'News', path: '#news' },
-    { name: 'Contact', path: '/contact' }
+    { name: t('header.homePage'), path: '/' },
+    { name: t('header.features'), path: '#features' },
+    { name: t('header.product'), path: '#paroller' },
+    { name: t('header.ingredient'), path: '#ingredient' },
+    { name: t('header.pricing'), path: '#pricing' },
+    { name: t('header.store'), path: '/shop' },
+    { name: t('header.news'), path: '#news' },
+    { name: t('header.contactUs'), path: '/contact' }
   ];
 
   return (
@@ -95,7 +91,7 @@ const Header = () => {
               {/* Language Toggle */}
               <button className="language-toggle" onClick={toggleLanguage}>
                 <span className="language-icon">🌐</span>
-                <span className="language-text">{isRTL ? 'EN' : 'عربي'}</span>
+                <span className="language-text">{isRTL ? 'עברית' : 'العربية'}</span>
               </button>
 
               {/* Cart */}
@@ -114,7 +110,7 @@ const Header = () => {
           {/* Logo */}
           <div className="mobile-logo">
             <Link to="/">
-              <img src="/src/assets/img/logo/logo.png" alt="Shifaa Logo" />
+              <img src="  /src/assets/img/logo/logo.png" alt="Shifaa Logo" />
             </Link>
           </div>
 
@@ -150,7 +146,7 @@ const Header = () => {
         <div className="drawer-overlay" onClick={closeMobileMenu}></div>
         <div className="drawer-content">
           <div className="drawer-header">
-            <h3 className="drawer-title">Menu</h3>
+            <h3 className="drawer-title">{t('header.menu')}</h3>
             <button className="drawer-close" onClick={closeMobileMenu}>
               <span className="close-icon">×</span>
             </button>

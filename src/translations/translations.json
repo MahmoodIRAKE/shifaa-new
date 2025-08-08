@@ -1,107 +1,15 @@
 {
-  "en": {
-    "header": {
-      "contactUs": "Contact Us",
-      "faq": "FAQ",
-      "articles": "Articles",
-      "aboutUs": "About Us",
-      "homePage": "Home Page",
-      "store": "Store"
-    },
-    "mainText": {
-    "greenTitle": "Every step closer to nature",
-    "whiteTitle": "is a step towards healing",
-    "btn1": "Buy Now",
-    "btn2": "Add to Cart"
-    },
-    "greenZone": {
-      "info": "Additional Information",
-      "first1": "There is participation",
-      "first2": "Guinea launch strike",
-      "first3": "In there is participation",
-      "first4": "Strike in there is participation"
-    },
-    "about": {
-      "sectionTitle": "About Us",
-      "paragraphs": [
-        "Everything started with a simple yet profound and essential question:",
-        "Why do many people feel that their energy is incomplete, despite following a healthy lifestyle?",
-        "The idea of Shifa began when the founders noticed that many people suffer from a lack of energy, balance, and overall health in their daily lives. It became clear that traditional solutions were not enough to keep up with the fast-paced life. The question was simple: how can a person return to nature to improve their health and feel balanced again?",
-        "Why did we choose the name \"Shifa\"?",
-        "Choosing the name \"Shifa\" was not a random decision, but rather a reflection of our vision and mission. From the very beginning, our goal was not just to produce dietary supplements, but to provide natural solutions that support the body in restoring its balance and strength in a natural and effective way.",
-        "The word \"Shifa\" carries a deeper meaning than just treatment or supplements—it is a journey of regaining wellness, balance, and the natural energy that every human being needs to live their best life.",
-        "We believe that the body has a natural ability to heal and regenerate, but it needs the right support. This is where we come in—providing pure products inspired by nature that give the body the essential elements it needs to function efficiently, without resorting to artificial substances or temporary solutions.",
-        "Our goal was clear from the start:",
-        "For this reason, we chose the name \"Shifa\"—because it represents everything we believe in and conveys our message with simplicity and clarity."
-      ]
-    },
-    "articles":{
-      "title":"مقالات",
-      "secondTitle":"Reliable information and health tips for a better life."
-    },
-    "faq": {
-    "title": "Frequently Asked Questions",
-    "secondTitle": "Everything you need to know about our products and how to use them.",
-    "btn": "Show More"
-  },
-  "contactUs": {
-    "heading": "Stay in Touch with Us",
-    "subHeading": "We are here to answer every",
-    "question": "Question",
-    "phonePlaceholder": "Phone Number",
-    "emailPlaceholder": "Email",
-    "namePlaceholder": "Name",
-    "messagePlaceholder": "Message",
-    "submitButton": "Send",
-    "successMessage":"Email successfully sent!",
-    "errorMessage":"There was an error sending the email"
-  },
-  "footer": {
-    "homePage": "Home Page",
-    "aboutUs": "About Us",
-    "articles": "Articles",
-    "faq": "Frequently Asked Questions",
-    "contactUs": "Contact Us",
-    "email": "hello@gmail.com",
-    "phone": "+09 793 24 259",
-    "location": "Somewhere in the World",
-    "allRightsReserved": "All Rights Reserved",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
-  },
-  "cart":{
-    "title":"السلة",
-    "total":"المبلغ الكلي",
-      "continue":"تابع الشراء",
-      "totalB":"المجموع",
-      "deTotal":"التوصيل",
-      "coupon":"كوبون",
-       "conShop":"تابع التسوق",
-       "customerInfo":"معلومات الزبون",
-       "address":"عنوان",
-       "mobile":"الهاتف المحمول",
-       "customerName":"اسم الزبون",
-       "email":"ايميل (الفاتورة)",
-       "area":"منطقة",
-       "addressNote":"ملاحظات من اجل الارسالية",
-       "marketing":"أوافق على استخدام بريدي الإلكتروني لتلقي الرسائل الإلكترونية والمحتوى التسويقي والعروض الحصرية.",
-       "policy":" من خلال المتابعة، أوافق على",
-       "policy2":"الخاصة بالموقع",
-        "policy3":"شروط الاستخدام",
-       "policy4":"وسياسة الخصوصية",
-       "formButton":"اكمل الدفع",
-       "discount":"خصم",
-         "seeMore":"معلومات اضافية"
-  }
-  },
   "ar": {
     "header": {
-      "contactUs": "تواصل معنا",
-      "faq": "الأسئلة المتكررة",
-      "articles": "مقالات",
-      "aboutUs": "نبذة عنا",
-      "homePage": "الصفحة الرئيسية",
-      "store": "المتجر"
+      "homePage": "الرئيسية",
+      "features": "المميزات",
+      "product": "المنتج",
+      "ingredient": "المكونات",
+      "pricing": "الأسعار",
+      "store": "المتجر",
+      "news": "الأخبار",
+      "contactUs": "اتصل بنا",
+      "menu": "القائمة"
     },
     "mainText": {
       "greenTitle": "كل خطوة أقرب إلى الطبيعة",
@@ -109,12 +17,12 @@
       "btn1": "الشراء الان",
       "btn2": "اضافة لسلة الشراء"
     },
-    "greenZone":{
-      "info":"معلومات اضافية",
-      "first1":"هناك مشاركة",
-      "first2":"غينيا إنطلاق ضرب",
-      "first3":"في هناك مشاركة",
-      "first4":"ضرب في هناك مشاركة"
+    "greenZone": {
+      "info": "معلومات اضافية",
+      "first1": "هناك مشاركة",
+      "first2": "غينيا إنطلاق ضرب",
+      "first3": "في هناك مشاركة",
+      "first4": "ضرب في هناك مشاركة"
     },
     "about": {
       "sectionTitle": "نبذة عنا",
@@ -130,79 +38,149 @@
         "لهذا السبب، اخترنا اسم \"شفاء\"—لأنه يمثل كل ما نؤمن به، ويوصل رسالتنا ببساطة ووضوح."
       ]
     },
-    "articles":{
-      "title":"مقالات",
-      "secondTitle":"معلومات موثوقة ونصائح صحية لحياة أفضل"
+    "articles": {
+      "title": "مقالات",
+      "secondTitle": "معلومات موثوقة ونصائح صحية لحياة أفضل"
     },
-    "faq":{
-      "title":"الأسئلة المتكررة",
-      "secondTitle":"كل ما تحتاج معرفته عن منتجاتنا واستخدامها",
-      "btn":"عرض المزيد"
-    },
-   
-      "contactUs": {
-        "heading": "كن على تواصل معنا",
-        "subHeading": "نحن هنا للاجابة عن كل",
-        "question": "سؤال",
-        "phonePlaceholder": "رقم الهاتف",
-        "emailPlaceholder": "الايميل",
-        "namePlaceholder": "الاسم",
-        "messagePlaceholder": "ألرساله",
-        "submitButton": "ارسال",
-        "successMessage":"تم إرسال البريد الإلكتروني بنجاح!",
-        "errorMessage":"حدث خطأ أثناء إرسال البريد الإلكتروني"
+    "faq": {
+      "title": "الأسئلة المتكررة",
+      "subtitle": ".. اسأل سؤال ..",
+      "readMore": "اقرأ المزيد",
+      "item1": {
+        "question": "هل مكونات شفاء قابلة للبحث؟",
+        "answer": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة. هناك العديد من الاختلافات في النصوص."
       },
-      
-        "footer": {
-          "homePage": "الصفحة الرئيسية",
-          "aboutUs": "نبذة عنا",
-          "articles": "مقالات",
-          "faq": "الأسئلة المتكررة",
-          "contactUs": "تواصل معنا",
-          "email": "hello@gmail.com",
-          "phone": "+09 793 24 259",
-          "location": "Somewhere in the World",
-          "allRightsReserved": "جميع الحقوق محفوظة",
-          "privacyPolicy": "سياسة الخصوصية",
-          "termsOfService": "شروط الخدمة"
-        },
-      "cart":{
-        "title":"السلة",
-         "total":"المبلغ الكلي",
-         "totalB":"المجموع",
-         "deTotal":"التوصيل",
-         "coupon":"كوبون",
-           "continue":"تابع الشراء",
-       "conShop":"تابع التسوق",
-       "customerInfo":"معلومات الزبون",
-       "address":"عنوان",
-       "mobile":"الهاتف المحمول",
-       "customerName":"اسم الزبون",
-       "email":"ايميل (الفاتورة)",
-       "area":"منطقة",
-       "addressNote":"ملاحظات من اجل الارسالية",
-       "marketing":"أوافق على استخدام بريدي الإلكتروني لتلقي الرسائل الإلكترونية والمحتوى التسويقي والعروض الحصرية.",
-       "policy":"من خلال المتابعة، أوافق على " ,
-       "policy2":"الخاصة بالموقع",
-             "policy3":"شروط الاستخدام",
-       "policy4":"وسياسة الخصوصية",
-       "formButton":"اكمل الدفع",
-       "discount":"خصم",
-         "seeMore":"معلومات اضافية"
+      "item2": {
+        "question": "كيف يمكن تعديل سمات شفاء؟",
+        "answer": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة. هناك العديد من الاختلافات في النصوص."
+      },
+      "item3": {
+        "question": "هل تطبيق شفاء تطبيق قوي؟",
+        "answer": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة. هناك العديد من الاختلافات في النصوص."
+      },
+      "item4": {
+        "question": "أحدث إصدار من خلال شفاء قوي؟",
+        "answer": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة. هناك العديد من الاختلافات في النصوص."
+      },
+      "item5": {
+        "question": "كيف يمكن تتبع طلبي؟",
+        "answer": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة. هناك العديد من الاختلافات في النصوص."
       }
-      
-      
-    
-    
+    },
+    "contactUs": {
+      "heading": "كن على تواصل معنا",
+      "subHeading": "نحن هنا للاجابة عن كل",
+      "question": "سؤال",
+      "phonePlaceholder": "رقم الهاتف",
+      "emailPlaceholder": "الايميل",
+      "namePlaceholder": "الاسم",
+      "messagePlaceholder": "الرسالة",
+      "submitButton": "ارسال",
+      "successMessage": "تم إرسال البريد الإلكتروني بنجاح!",
+      "errorMessage": "حدث خطأ أثناء إرسال البريد الإلكتروني"
+    },
+    "footer": {
+      "homePage": "الصفحة الرئيسية",
+      "aboutUs": "نبذة عنا",
+      "articles": "مقالات",
+      "faq": "الأسئلة المتكررة",
+      "contactUs": "تواصل معنا",
+      "email": "hello@gmail.com",
+      "phone": "+09 793 24 259",
+      "location": "Somewhere in the World",
+      "allRightsReserved": "جميع الحقوق محفوظة",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة"
+    },
+    "cart": {
+      "title": "السلة",
+      "total": "المبلغ الكلي",
+      "totalB": "المجموع",
+      "deTotal": "التوصيل",
+      "coupon": "كوبون",
+      "continue": "تابع الشراء",
+      "conShop": "تابع التسوق",
+      "customerInfo": "معلومات الزبون",
+      "address": "عنوان",
+      "mobile": "الهاتف المحمول",
+      "customerName": "اسم الزبون",
+      "email": "ايميل (الفاتورة)",
+      "area": "منطقة",
+      "addressNote": "ملاحظات من اجل الارسالية",
+      "marketing": "أوافق على استخدام بريدي الإلكتروني لتلقي الرسائل الإلكترونية والمحتوى التسويقي والعروض الحصرية.",
+      "policy": "من خلال المتابعة، أوافق على",
+      "policy2": "الخاصة بالموقع",
+      "policy3": "شروط الاستخدام",
+      "policy4": "وسياسة الخصوصية",
+      "formButton": "اكمل الدفع",
+      "discount": "خصم",
+      "seeMore": "معلومات اضافية"
+    },
+    "shop": {
+      "title": "المتجر",
+      "filter": "تصفية",
+      "sort": "ترتيب",
+      "addToCart": "أضف للسلة",
+      "viewDetails": "عرض التفاصيل",
+      "price": "السعر",
+      "category": "الفئة"
+    },
+    "checkout": {
+      "title": "إتمام الطلب",
+      "billingInfo": "معلومات الفواتير",
+      "paymentMethod": "طريقة الدفع",
+      "orderSummary": "ملخص الطلب",
+      "placeOrder": "إتمام الطلب"
+    },
+    "banner": {
+      "caption": "شفاء طبيعي",
+      "title": "شفاء طبيعي للجسم والعقل",
+      "shopNow": "تسوق الآن"
+    },
+    "brand": {
+      "title": "علامات تجارية موثوقة"
+    },
+    "service": {
+      "title": "مميزات شفاء",
+      "subtitle": "مكملات غذائية",
+      "readMore": "اقرأ المزيد",
+      "item1": {
+        "title": "مكمل غذائي",
+        "description": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة."
+      },
+      "item2": {
+        "title": "صيغة مبتكرة",
+        "description": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة."
+      },
+      "item3": {
+        "title": "كبسولة بروتين",
+        "description": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة."
+      },
+      "item4": {
+        "title": "توفير العناصر الغذائية",
+        "description": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة."
+      },
+      "item5": {
+        "title": "طعام اصطناعي",
+        "description": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة."
+      },
+      "item6": {
+        "title": "دليل المكملات",
+        "description": "هناك العديد من الاختلافات في النصوص المتاحة ولكن الغالبية لها تعديل في شكل ما من خلال الفكاهة المحقونة."
+      }
+    }
   },
   "he": {
     "header": {
-      "contactUs": "צור קשר",
-      "faq": "שאלות נפוצות",
-      "articles": "מאמרים",
-      "aboutUs": "עלינו",
       "homePage": "דף הבית",
-      "store": "חנות"
+      "features": "תכונות",
+      "product": "מוצר",
+      "ingredient": "רכיבים",
+      "pricing": "מחירים",
+      "store": "חנות",
+      "news": "חדשות",
+      "contactUs": "צור קשר",
+      "menu": "תפריט"
     },
     "mainText": {
       "greenTitle": "כל צעד קרוב יותר לטבע",
@@ -231,14 +209,34 @@
         "לכן, בחרנו בשם \"שיפוי\" – כי הוא מייצג את כל מה שאנו מאמינים בו ומעביר את המסר שלנו בצורה פשוטה וברורה."
       ]
     },
-    "articles":{
-      "title":"מאמרים",
-      "secondTitle":"מידע מהימן וטיפים בריאותיים לחיים טובים יותר"
+    "articles": {
+      "title": "מאמרים",
+      "secondTitle": "מידע מהימן וטיפים בריאותיים לחיים טובים יותר"
     },
     "faq": {
       "title": "שאלות נפוצות",
-      "secondTitle": "כל מה שאתה צריך לדעת על המוצרים שלנו והשימוש בהם",
-      "btn": "הצג עוד"
+      "subtitle": ".. שאל שאלה ..",
+      "readMore": "קרא עוד",
+      "item1": {
+        "question": "האם רכיבי שיפוי מספקים חיפוש?",
+        "answer": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק. יש הרבה וריאציות של טקסטים."
+      },
+      "item2": {
+        "question": "איך לערוך ערכות נושא של שיפוי?",
+        "answer": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק. יש הרבה וריאציות של טקסטים."
+      },
+      "item3": {
+        "question": "האם אפליקציית שיפוי היא אפליקציה חזקה?",
+        "answer": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק. יש הרבה וריאציות של טקסטים."
+      },
+      "item4": {
+        "question": "הגרסה האחרונה דרך שיפוי חזקה?",
+        "answer": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק. יש הרבה וריאציות של טקסטים."
+      },
+      "item5": {
+        "question": "איך לעקוב אחר ההזמנה שלי?",
+        "answer": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק. יש הרבה וריאציות של טקסטים."
+      }
     },
     "contactUs": {
       "heading": "שמור איתנו על קשר",
@@ -249,8 +247,8 @@
       "namePlaceholder": "שם",
       "messagePlaceholder": "הודעה",
       "submitButton": "שלח",
-      "successMessage":"האימייל נשלח בהצלחה!",
-      "errorMessage":"חלה שגיאה בשליחת האימייל"
+      "successMessage": "האימייל נשלח בהצלחה!",
+      "errorMessage": "חלה שגיאה בשליחת האימייל"
     },
     "footer": {
       "homePage": "דף הבית",
@@ -265,31 +263,82 @@
       "privacyPolicy": "מדיניות פרטיות",
       "termsOfService": "תנאי שימוש"
     },
-    "cart":{
-      "title":"السلة",
-       "total":"المبلغ الكلي",
-       "totalB":"المجموع",
-       "deTotal":"التوصيل",
-       "coupon":"كوبون",
-       "continue":"تابع الشراء",
-       "conShop":"تابع التسوق",
-       "customerInfo":"معلومات الزبون",
-       "address":"عنوان",
-       "mobile":"الهاتف المحمول",
-       "customerName":"اسم الزبون",
-       "email":"ايميل (الفاتورة)",
-       "area":"منطقة",
-       "addressNote":"ملاحظات من اجل الارسالية",
-       "marketing":"أوافق على استخدام بريدي الإلكتروني لتلقي الرسائل الإلكترونية والمحتوى التسويقي والعروض الحصرية.",
-       "policy":"من خلال المتابعة، أوافق على",
-       "policy2":"الخاصة بالموقع",
-       "policy3":"شروط الاستخدام",
-       "policy4":"وسياسة الخصوصية",
-       "formButton":"اكمل الدفع",
-       "discount":"خصم",
-       "seeMore":"מידע נוסף"
+    "cart": {
+      "title": "עגלת קניות",
+      "total": "סכום כולל",
+      "totalB": "סה\"כ",
+      "deTotal": "משלוח",
+      "coupon": "קופון",
+      "continue": "המשך לקנייה",
+      "conShop": "המשך בקניות",
+      "customerInfo": "פרטי הלקוח",
+      "address": "כתובת",
+      "mobile": "טלפון נייד",
+      "customerName": "שם הלקוח",
+      "email": "אימייל (חשבונית)",
+      "area": "אזור",
+      "addressNote": "הערות למשלוח",
+      "marketing": "אני מסכים לשימוש באימייל שלי לקבלת הודעות אלקטרוניות, תוכן שיווקי והצעות בלעדיות.",
+      "policy": "בהמשך, אני מסכים ל",
+      "policy2": "של האתר",
+      "policy3": "תנאי שימוש",
+      "policy4": "ומדיניות פרטיות",
+      "formButton": "השלם תשלום",
+      "discount": "הנחה",
+      "seeMore": "מידע נוסף"
+    },
+    "shop": {
+      "title": "חנות",
+      "filter": "סינון",
+      "sort": "מיון",
+      "addToCart": "הוסף לעגלה",
+      "viewDetails": "צפה בפרטים",
+      "price": "מחיר",
+      "category": "קטגוריה"
+    },
+    "checkout": {
+      "title": "תשלום",
+      "billingInfo": "פרטי חשבונית",
+      "paymentMethod": "אמצעי תשלום",
+      "orderSummary": "סיכום הזמנה",
+      "placeOrder": "השלם הזמנה"
+    },
+    "banner": {
+      "caption": "ריפוי טבעי",
+      "title": "ריפוי טבעי לגוף ולנפש",
+      "shopNow": "קנה עכשיו"
+    },
+    "brand": {
+      "title": "מותגים מהימנים"
+    },
+    "service": {
+      "title": "תכונות שיפוי",
+      "subtitle": "תוספי תזונה",
+      "readMore": "קרא עוד",
+      "item1": {
+        "title": "תוסף תזונה",
+        "description": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק."
+      },
+      "item2": {
+        "title": "נוסחה חדשנית",
+        "description": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק."
+      },
+      "item3": {
+        "title": "כמוסת חלבון",
+        "description": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק."
+      },
+      "item4": {
+        "title": "אספקת חומרים מזינים",
+        "description": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק."
+      },
+      "item5": {
+        "title": "מזון סינתטי",
+        "description": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק."
+      },
+      "item6": {
+        "title": "מדריך תוספים",
+        "description": "יש הרבה וריאציות של טקסטים זמינים אבל לרוב יש שינוי בצורה כלשהי דרך הומור מוזרק."
+      }
     }
-
-  
   }
 }

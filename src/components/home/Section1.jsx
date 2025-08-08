@@ -7,17 +7,15 @@ const Section1 = () => {
   return (
     <section className="banner-area">
       <div className="container">
-        <div className="row justify-content-center1">
+        <div className="row justify-content-center">
           <div className="col-xxl-8 col-xl-7 col-lg-8 col-md-10">
             <div className="banner-content text-center">
-              <p className="banner-caption">{t('index.banner.caption')}</p>
-              <h2 className="title">{t('index.banner.title')}</h2>
-              <a href="/shop" className="btn btn-two">{t('index.banner.shopNow')}</a>
+              <p className="banner-caption">{t('banner.caption')}</p>
+              <h2 className="title">{t('banner.title')}</h2>
+              <a href="/shop" className="btn btn-two">{t('banner.shopNow')}</a>
             </div>
           </div>
         </div>
-
-
         <div className="row">
           <div className="col-12">
             <div className="banner-images text-center">
@@ -26,8 +24,6 @@ const Section1 = () => {
             </div>
           </div>
         </div>
-
-
       </div>
       <div className="banner-shape one">
         <img src={require("../../assets/img/banner/banner_shape01.png")} alt="shape" className="wow bannerFadeInLeft" data-wow-delay=".2s" data-wow-duration="2s" />
@@ -35,6 +31,7 @@ const Section1 = () => {
       <div className="banner-shape two">
         <img src={require("../../assets/img/banner/banner_shape02.png")} alt="shape" className="wow bannerFadeInRight" data-wow-delay=".2s" data-wow-duration="2s" />
       </div>
+
     </section>
   );
 };

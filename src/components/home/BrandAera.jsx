@@ -15,7 +15,7 @@ const BrandAera = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const brandLogos = [1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3];
+  const brandLogos = [1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3];
 
   return (
     <div className="brand-area">
@@ -24,7 +24,7 @@ const BrandAera = () => {
           <div className="col-12">
             <div className="brand-title text-center mb-50">
               <p className={`title ${isVisible ? 'animate-title' : ''}`}>
-                {t('index.brand.title')}
+                {t('brand.title')}
               </p>
             </div>
           </div>

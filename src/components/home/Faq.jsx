@@ -9,36 +9,36 @@ const Faq = () => {
     {
       id: 1,
       count: "01",
-      question: "Suxnix ingredients provides a searchable ?",
-      answer: "There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.",
+      question: t('faq.item1.question'),
+      answer: t('faq.item1.answer'),
       readMoreLink: "/faq/ingredients"
     },
     {
       id: 2,
       count: "02",
-      question: "How to edit Suxnix themes ?",
-      answer: "There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.",
+      question: t('faq.item2.question'),
+      answer: t('faq.item2.answer'),
       readMoreLink: "/faq/themes"
     },
     {
       id: 3,
       count: "03",
-      question: "Suxnix app is a powerful application ?",
-      answer: "There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.",
+      question: t('faq.item3.question'),
+      answer: t('faq.item3.answer'),
       readMoreLink: "/faq/app"
     },
     {
       id: 4,
       count: "04",
-      question: "Latest version thorough Suxnix powerful ?",
-      answer: "There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.",
+      question: t('faq.item4.question'),
+      answer: t('faq.item4.answer'),
       readMoreLink: "/faq/version"
     },
     {
       id: 5,
       count: "05",
-      question: "How to Track My Order ?",
-      answer: "There are many variations of passages of lorem ipsum that available but the majority have alteration in some form by injected humour. There are many variations of passages.",
+      question: t('faq.item5.question'),
+      answer: t('faq.item5.answer'),
       readMoreLink: "/faq/tracking"
     }
   ];
@@ -51,8 +51,8 @@ const Faq = () => {
     <div className="col-lg-8 col-md-10 col-sm-12 mx-auto">
       <div className="faq-wrapper">
         <div className="section-title mb-50 text-center">
-          <p className="sub-title">.. Ask Question ..</p>
-          <h2 className="title">Get Every Answers</h2>
+          <p className="sub-title">{t('faq.subtitle')}</p>
+          <h2 className="title">{t('faq.title')}</h2>
         </div>
         <div className="faq-accordion">
           {faqItems.map((item, index) => (
@@ -68,7 +68,7 @@ const Faq = () => {
                 <p>{item.answer}</p>
                 <div className="faq-read-more">
                   <a href={item.readMoreLink} className="read-more-btn">
-                    <i className="fas fa-arrow-circle-right"></i> Read More
+                    <i className="fas fa-arrow-circle-right"></i> {t('faq.readMore')}
                   </a>
                 </div>
               </div>
