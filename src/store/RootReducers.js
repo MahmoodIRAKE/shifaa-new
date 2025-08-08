@@ -4,7 +4,7 @@ import  CartSlice  from './cart/CartSlice.js';
 
 
 const RootReducer = combineReducers({
-    product:ProductsSlice,
+    products:ProductsSlice,
     cart:CartSlice,
 });
 

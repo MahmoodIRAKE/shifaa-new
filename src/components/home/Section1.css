@@ -1,0 +1,100 @@
+/* Section1 Styling */
+
+/* Floating Animation for Main Image */
+.main-img {
+  animation: floatAndRotate 4s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.main-img:hover {
+  animation-play-state: paused;
+  transform: scale(1.05);
+}
+
+/* Floating Animation Keyframes */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Enhanced Floating Animation with Rotation */
+.main-img {
+  animation: floatAndRotate 4s ease-in-out infinite;
+}
+
+@keyframes floatAndRotate {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Smooth transition for hover effects */
+.main-img {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.main-img:hover {
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+  transform: scale(1.02);
+}
+
+/* Hide background shape on mobile devices */
+@media (max-width: 768px) {
+  .bg-shape1 {
+    display: none;
+  }
+  
+  .main-img {
+    animation: float 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-img {
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}

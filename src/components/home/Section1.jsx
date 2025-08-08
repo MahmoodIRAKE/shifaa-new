@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectProducts } from '../../store/Products/ProductsSelectors';
+import { getProductsThunk } from '../../store/Products/ProductsThunk';
+import './Section1.css';
 
 const Section1 = () => {
   const { t } = useLanguage();
+  const products = useSelector(selectProducts)
+  const dispatch = useDispatch();
+
+
+  console.log(products[0]);
 
   return (
     <section className="banner-area">
@@ -19,7 +28,7 @@ const Section1 = () => {
         <div className="row">
           <div className="col-12">
             <div className="banner-images text-center">
-              <img src={require("../../assets/img/banner/banner_img01.png")} alt="img" className="main-img" />
+              <img src={products[0].image} alt="img" className="main-img" />
               <img src={require("../../assets/img/banner/banner_round_bg.png")} alt="img" className="bg-shape1" />
             </div>
           </div>

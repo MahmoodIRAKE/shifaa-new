@@ -1,29 +1,26 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {  getProducts } from "./ProductServices";
-import { setProducts } from "./ProductsSlice";
-
-
-
+import { getProducts } from "./ProductServices";
 
 export const getProductsThunk = createAsyncThunk(
-    "product/products", // A unique string to identify this thunk
-    async ({dispatch}) => {
-
-      try {
-        console.log("Mahmood")
-        const response= await getProducts();
-        // const allProducts = collectAllProducts(response.data);
-        console.log(response.data);
-        // if(response.status===200 && allProducts.length>0){
-        //     dispatch(setProducts(allProducts));
-          
-        // }
-
-      } catch (error) {
-        console.log(error);
+  "products/getProducts",
+  async (_, { rejectWithValue }) => {
+    try {
+      console.log("Fetching products...");
+      const response = await getProducts();
+      
+      if (response.status === 200 && response.data.length > 0) {
+        console.log("Products fetched successfully:", response.data);
+        return response.data;
+      } else {
+        console.log("No products found or invalid response");
+        return [];
       }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return rejectWithValue(error.message);
     }
-  );
+  }
+);
 
 
   

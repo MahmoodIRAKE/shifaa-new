@@ -10,14 +10,36 @@ import FirstEntery from '../components/home/FirstEntery.jsx';
 import Articles from '../components/home/Articles.jsx';
 import Faq from '../components/home/Faq.jsx';
 import Footer from '../components/Footer/Footer.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsThunk } from '../store/Products/ProductsThunk';
+import { 
+  selectProducts, 
+  selectProductsLoading, 
+  selectProductsError, 
+  selectProductsErrorMessage 
+} from '../store/Products/ProductsSelectors';
 
 const Home = () => {
   const { t } = useLanguage();
   const [activeAccordion, setActiveAccordion] = useState('collapseOne');
-
+  const products = useSelector(selectProducts);
+  const loading = useSelector(selectProductsLoading);
+  const error = useSelector(selectProductsError);
+  const errorMessage = useSelector(selectProductsErrorMessage);
+  const dispatch = useDispatch();
+  
   const handleAccordionToggle = (target) => {
     setActiveAccordion(activeAccordion === target ? '' : target);
   };
+
+  useEffect(() => {
+    console.log('Home component mounted, dispatching getProductsThunk...');
+    dispatch(getProductsThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('Products state updated:', { products, loading, error, errorMessage });
+  }, [products, loading, error, errorMessage]);
 
   const renderStars = (rating) => {
     const stars = [];
@@ -38,6 +60,26 @@ const Home = () => {
 
   return (
     <div className="main-area fix">
+      {/* Debug info - remove in production */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{ 
+          position: 'fixed', 
+          top: 10, 
+          right: 10, 
+          background: 'rgba(0,0,0,0.8)', 
+          color: 'white', 
+          padding: '10px', 
+          borderRadius: '5px', 
+          fontSize: '12px',
+          zIndex: 9999
+        }}>
+          <div>Loading: {loading ? 'Yes' : 'No'}</div>
+          <div>Error: {error ? 'Yes' : 'No'}</div>
+          <div>Products: {products?.length || 0}</div>
+          {errorMessage && <div>Error: {errorMessage}</div>}
+        </div>
+      )}
+
       {/* Pre-loader */}
       {/* <div id="preloader">
         <div className="tg-cube-grid">
@@ -69,9 +111,6 @@ const Home = () => {
       <Articles />
       <Faq />
       <Footer />
-     
-
-    
     </div>
   );
 };

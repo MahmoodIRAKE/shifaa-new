@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import { useLanguage } from '../../context/LanguageContext';
-import Loader from '../loader/loader';
+import Loader from '../loader/loader.js';
 import './ContactForm.css';
 
 const ContactForm = () => {
