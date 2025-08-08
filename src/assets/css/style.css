@@ -1243,6 +1243,7 @@ body.search-visible {
 .breadcrumb-content {
 	position: relative;
 	z-index: 4;
+	
 }
 .breadcrumb-content .title {
     font-size: 60px;

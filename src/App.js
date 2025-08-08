@@ -11,6 +11,7 @@ import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
 import Shop from './pages/Shop';
 import ShopDetails from './pages/ShopDetails';
+import ArticleItem from './pages/ArticleItem';
 import './App.css';
 
 
@@ -30,6 +31,7 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:productId" element={<ShopDetails />} />
+            <Route path="/article/:articleId" element={<ArticleItem />} />
             {/* Add more routes here as you create more pages */}
           </Routes>
         </main>

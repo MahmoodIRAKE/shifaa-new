@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useNavigate } from 'react-router-dom';
+import ARTICLES from '../../constants/articles';
+import ARTICLESHE from '../../constants/articlesHe';
 import './Articles.css';
 
 const Articles = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const navigate = useNavigate();
   const [isAnimated, setIsAnimated] = useState(false);
   const [animatedCards, setAnimatedCards] = useState([]);
+
+  // Get the correct articles array based on language
+  const articlesData = language === 'he' ? ARTICLESHE : ARTICLES;
 
   useEffect(() => {
     // Trigger animation after component mounts
@@ -20,7 +27,7 @@ const Articles = () => {
     if (isAnimated) {
       // Animate cards one by one
       const cardTimers = [];
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < articlesData.length; i++) {
         const timer = setTimeout(() => {
           setAnimatedCards(prev => [...prev, i]);
         }, 150 * (i + 1));
@@ -31,58 +38,11 @@ const Articles = () => {
         cardTimers.forEach(timer => clearTimeout(timer));
       };
     }
-  }, [isAnimated]);
+  }, [isAnimated, articlesData.length]);
 
-  const serviceItems = [
-    {
-      id: 1,
-      count: "01",
-      icon: "flaticon-vitamins-1",
-      title: t('service.item1.title'),
-      description: t('service.item1.description'),
-      link: "/contact"
-    },
-    {
-      id: 2,
-      count: "02",
-      icon: "flaticon-supplement",
-      title: t('service.item2.title'),
-      description: t('service.item2.description'),
-      link: "/contact"
-    },
-    {
-      id: 3,
-      count: "03",
-      icon: "flaticon-vitamins",
-      title: t('service.item3.title'),
-      description: t('service.item3.description'),
-      link: "/contact"
-    },
-    {
-      id: 4,
-      count: "04",
-      icon: "flaticon-protein-2",
-      title: t('service.item4.title'),
-      description: t('service.item4.description'),
-      link: "/contact"
-    },
-    {
-      id: 5,
-      count: "05",
-      icon: "flaticon-tape-measure",
-      title: t('service.item5.title'),
-      description: t('service.item5.description'),
-      link: "/contact"
-    },
-    {
-      id: 6,
-      count: "06",
-      icon: "flaticon-abs-1",
-      title: t('service.item6.title'),
-      description: t('service.item6.description'),
-      link: "/contact"
-    }
-  ];
+  const handleReadMore = (articleId) => {
+    navigate(`/article/${articleId}`);
+  };
 
   return (
     <section id="feature" className="tg-service-area">
@@ -99,19 +59,21 @@ const Articles = () => {
             </div>
           </div>
           <div className="row justify-content-center articles-container">
-            {serviceItems.map((item, index) => (
-              <div key={item.id} className="col-lg-4 col-md-6 col-sm-12">
+            {articlesData.map((article, index) => (
+              <div key={article.id} className="col-lg-4 col-md-6 col-sm-12">
                 <div className={`tg-service-item article-card ${animatedCards.includes(index) ? 'animate-card' : ''}`}>
-                  <div className="tg-services-count">{item.count}</div>
+                  <div className="tg-services-count">{String(article.id).padStart(2, '0')}</div>
                   <div className="icon">
-                    <i className={item.icon}></i>
+                    <i className="flaticon-article"></i>
                   </div>
                   <h2 className="title">
-                    <a href={item.link}>{item.title}</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleReadMore(article.id); }}>
+                      {article.title}
+                    </a>
                   </h2>
                   <div className="tg-service-content">
-                    <p>{item.description}</p>
-                    <a href={item.link}>
+                    <p>{article.content[0].substring(0, 150)}...</p>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleReadMore(article.id); }}>
                       <i className="fas fa-arrow-circle-right"></i>{t('service.readMore')}
                     </a>
                   </div>
