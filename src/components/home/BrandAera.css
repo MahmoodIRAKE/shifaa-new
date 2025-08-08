@@ -1,0 +1,242 @@
+/* Brand Area Motion Animations */
+
+.brand-area {
+  padding: 80px 0;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.brand-title {
+  margin-bottom: 60px;
+}
+
+.brand-title .title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.brand-title .title.animate-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Brand Container */
+.brand-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.brand-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  animation: slideBrands 50s linear infinite;
+  width: max-content;
+}
+
+/* Individual Brand Items */
+.brand-item {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.6s ease;
+}
+
+.brand-item.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  /* background-color: red; */
+}
+
+.brand-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.brand-logo:hover::before {
+  left: 100%;
+}
+
+.brand-logo:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.brand-logo img {
+  max-width: 80%;
+  max-height: 60%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.brand-logo:hover img {
+  filter: grayscale(0%);
+}
+
+/* Sliding Animation */
+@keyframes slideBrands {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animation Classes */
+.brand-container.animate-brands .brand-item {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Staggered Animation for Brand Items */
+.brand-container.animate-brands .brand-item:nth-child(1) { animation-delay: 0.1s; }
+.brand-container.animate-brands .brand-item:nth-child(2) { animation-delay: 0.2s; }
+.brand-container.animate-brands .brand-item:nth-child(3) { animation-delay: 0.3s; }
+.brand-container.animate-brands .brand-item:nth-child(4) { animation-delay: 0.4s; }
+.brand-container.animate-brands .brand-item:nth-child(5) { animation-delay: 0.5s; }
+.brand-container.animate-brands .brand-item:nth-child(6) { animation-delay: 0.6s; }
+.brand-container.animate-brands .brand-item:nth-child(7) { animation-delay: 0.7s; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .brand-track {
+    gap: 30px;
+  }
+  
+  .brand-logo {
+    width: 100px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 992px) {
+  .brand-track {
+    gap: 25px;
+    animation-duration: 25s;
+  }
+  
+  .brand-logo {
+    width: 90px;
+    height: 60px;
+  }
+  
+  .brand-title .title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-area {
+    padding: 60px 0;
+  }
+  
+  .brand-track {
+    gap: 20px;
+    animation-duration: 20s;
+  }
+  
+  .brand-logo {
+    width: 80px;
+    height: 50px;
+  }
+  
+  .brand-title .title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-track {
+    gap: 15px;
+    animation-duration: 15s;
+  }
+  
+  .brand-logo {
+    width: 70px;
+    height: 45px;
+  }
+  
+  .brand-title .title {
+    font-size: 16px;
+  }
+}
+
+/* Pause animation on hover */
+.brand-container:hover .brand-track {
+  animation-play-state: paused;
+}
+
+/* RTL Support */
+.rtl .brand-track {
+  animation-direction: reverse;
+}
+
+.rtl .brand-logo::before {
+  left: 100%;
+  right: auto;
+}
+
+.rtl .brand-logo:hover::before {
+  left: -100%;
+  right: auto;
+}
+
+/* Loading State */
+.brand-container:not(.animate-brands) .brand-track {
+  animation: none;
+}
+
+/* Smooth entrance animation */
+.brand-area {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSection 1s ease forwards;
+}
+
+@keyframes fadeInSection {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
