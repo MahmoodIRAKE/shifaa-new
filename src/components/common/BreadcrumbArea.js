@@ -6,13 +6,17 @@ const BreadcrumbArea = ({ title, breadcrumbs }) => {
   const { isRTL } = useLanguage();
 
   return (
-    <section className="breadcrumb-area breadcrumb-bg" style={{
+    <section className=" breadcrumb-bg" style={{
       backgroundImage: `url(${require("../../assets/img/bg/video_bg.png")})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
-      marginTop: '-170px',
-      height: '550px',
+      backgroundAttachment: 'fixed',
+      // marginTop: '-190px',
+      minHeight: '50vh',
+      width: '100%',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
       <div className="container">
         <div className="row justify-content-center">

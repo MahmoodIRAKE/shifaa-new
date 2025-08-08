@@ -83,6 +83,7 @@
       "namePlaceholder": "الاسم",
       "messagePlaceholder": "الرسالة",
       "submitButton": "ارسال",
+      "sending": "جاري الإرسال...",
       "successMessage": "تم إرسال البريد الإلكتروني بنجاح!",
       "errorMessage": "حدث خطأ أثناء إرسال البريد الإلكتروني"
     },
@@ -261,6 +262,7 @@
       "namePlaceholder": "שם",
       "messagePlaceholder": "הודעה",
       "submitButton": "שלח",
+      "sending": "שולח...",
       "successMessage": "האימייל נשלח בהצלחה!",
       "errorMessage": "חלה שגיאה בשליחת האימייל"
     },

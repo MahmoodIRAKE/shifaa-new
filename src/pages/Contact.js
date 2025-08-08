@@ -21,44 +21,13 @@ const Contact = () => {
         ]}
       />
 
-      {/* Contact Info Area */}
-      <section className="contact-area">
-        <div className="container">
-          <div className="contact-box-wrapper">
-            <div className="row justify-content-center">
-              <div className="col-lg-4 col-md-6 col-sm-9">
-                <ContactInfo 
-                  icon="far fa-map"
-                  title={t('contact.officeAddress')}
-                  description={t('contact.officeAddressDesc')}
-                />
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-9">
-                <ContactInfo 
-                  icon="fas fa-phone"
-                  title={t('contact.phoneNumber')}
-                  description={t('contact.phoneNumberDesc')}
-                />
-              </div>
-              <div className="col-lg-4 col-md-6 col-sm-9">
-                <ContactInfo 
-                  icon="fas fa-globe"
-                  title={t('contact.webConnect')}
-                  description={t('contact.webConnectDesc')}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Contact Form Area */}
       <section className="contact-form-area">
         <div className="container">
           <div className="row">
-            <div className="col-xl-6">
-              <ContactMap />
-            </div>
+  
             <div className="col-xl-6">
               <ContactForm />
             </div>

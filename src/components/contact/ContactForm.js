@@ -1,154 +1,170 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from "react";
+import emailjs from "emailjs-com";
 import { useLanguage } from '../../context/LanguageContext';
+import Loader from '../loader/loader';
+import './ContactForm.css';
 
 const ContactForm = () => {
-  const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [errors, setErrors] = useState({});
+  // Create a ref for the form
+  const form = useRef();
+  const { t, language } = useLanguage();
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
+  const getContactInfoString = (formRef) => {
+    const formData = new FormData(formRef.current);
+    const phone = formData.get("phone");
+    const email = formData.get("email");
+    const name = formData.get("name");
+    const message = formData.get("message");
+
+    const emailParams = {
+      from_name: name,  // Sender's email
+      mobile: phone,
+      email: email,
+      message: message
+    };
+    return emailParams;
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = t('contact.errors.nameRequired');
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = t('contact.errors.emailRequired');
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = t('contact.errors.emailInvalid');
-    }
-    
-    if (!formData.subject) {
-      newErrors.subject = t('contact.errors.subjectRequired');
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = t('contact.errors.messageRequired');
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
+  // Handler to send email using EmailJS
+  const sendEmail = (e) => {
     e.preventDefault();
-    
-    if (validateForm()) {
-      console.log('Form submitted:', formData);
-      // Here you would typically send the data to your backend
-      alert(t('contact.successMessage'));
-      
-      // Reset form
-      setFormData({
-        fullName: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    }
+    setIsLoading(true);
+    const contactInfo = getContactInfoString(form);
+     
+    emailjs
+      .send(
+        "service_oudwv95", // Replace with your EmailJS service ID
+        "template_gg9ru2g", // Replace with your EmailJS template ID
+        contactInfo, 
+        "huuTmLf5Z2_bn1-4T" // Replace with your EmailJS user/public key
+      )
+      .then(
+        (result) => {
+          setIsLoading(false);
+          setMessage(t('contactUs.successMessage'));
+          setTimeout(() => setMessage(""), 5000)
+          // Optionally clear the form or display a success message
+        },
+        (error) => {
+          setIsLoading(false);
+          setError(t('contactUs.errorMessage'))
+          setTimeout(() => setError(""), 5000)
+        }
+      );
   };
 
   return (
-    <div className="contact-form-wrap">
-      <div className="section-title mb-50">
-        <p className="sub-title">{t('contact.subTitle')}</p>
-        <h2 className="title">{t('contact.mainTitle')}</h2>
+    <>
+      <Loader isLoading={isLoading} />
+      <div className="contact-form-wrap">
+        <div className="section-title text-center mb-60">
+          <span className="sub-title articles-subtitle">
+            {t('contactUs.heading')}
+          </span>
+          <h2 className="title articles-title">
+            {t('contactUs.subHeading')}
+            <br />
+            {t('contactUs.question')}
+          </h2>
+        </div>
+
+        <div className="row justify-content-center">
+          <div className="col-lg-10 col-md-12">
+            <form ref={form} onSubmit={sendEmail} className="contact-form">
+              <div className="row justify-content-center">
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
+                  <div className="form-grp text-center">
+                    <input
+                      type="text"
+                      name="phone"
+                      placeholder={t('contactUs.phonePlaceholder')}
+                      required
+                      className="form-control contact-input"
+                      disabled={isLoading}
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
+                  <div className="form-grp text-center">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={t('contactUs.emailPlaceholder')}
+                      required
+                      className="form-control contact-input"
+                      disabled={isLoading}
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
+                  <div className="form-grp text-center">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder={t('contactUs.namePlaceholder')}
+                      required
+                      className="form-control contact-input"
+                      disabled={isLoading}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="row justify-content-center">
+                <div className="col-lg-8 col-md-10 col-sm-12">
+                  <div className="form-grp text-center">
+                    <textarea
+                      name="message"
+                      placeholder={t('contactUs.messagePlaceholder')}
+                      required
+                      rows="5"
+                      className="form-control contact-textarea"
+                      disabled={isLoading}
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="row justify-content-center">
+                <div className="col-lg-6 col-md-8 col-sm-12">
+                  <div className="form-btn text-center">
+                    <button 
+                      type="submit" 
+                      className="btn contact-btn"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? t('contactUs.sending') : t('contactUs.submitButton')}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              {message && (
+                <div className="row justify-content-center mt-3">
+                  <div className="col-lg-8 col-md-10 col-sm-12">
+                    <div style={{ fontSize: "16px", color: "#A9D15A", textAlign: "center" }}>
+                      {message}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {error && (
+                <div className="row justify-content-center mt-3">
+                  <div className="col-lg-8 col-md-10 col-sm-12">
+                    <div style={{ fontSize: "16px", color: "red", textAlign: "center" }}>
+                      {error}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
       </div>
-      
-      <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-grp">
-              <label htmlFor="fullName">{t('contact.fullName')}</label>
-              <input 
-                type="text" 
-                id="fullName"
-                name="fullName"
-                placeholder={t('contact.enterHere')}
-                value={formData.fullName}
-                onChange={handleInputChange}
-                className={errors.fullName ? 'error' : ''}
-              />
-              {errors.fullName && <div className="help-block with-errors">{errors.fullName}</div>}
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-grp">
-              <label htmlFor="email">{t('contact.emailAddress')}</label>
-              <input 
-                type="email" 
-                id="email"
-                name="email"
-                placeholder={t('contact.enterHere')}
-                value={formData.email}
-                onChange={handleInputChange}
-                className={errors.email ? 'error' : ''}
-              />
-              {errors.email && <div className="help-block with-errors">{errors.email}</div>}
-            </div>
-          </div>
-        </div>
-        
-        <div className="form-grp">
-          <select 
-            className="form-select"
-            name="subject"
-            value={formData.subject}
-            onChange={handleInputChange}
-            className={errors.subject ? 'error' : ''}
-          >
-            <option value="">{t('contact.selectSubject')}</option>
-            <option value="delivery">{t('contact.subjects.delivery')}</option>
-            <option value="diet">{t('contact.subjects.diet')}</option>
-            <option value="marketing">{t('contact.subjects.marketing')}</option>
-            <option value="success">{t('contact.subjects.success')}</option>
-            <option value="wholesale">{t('contact.subjects.wholesale')}</option>
-          </select>
-          {errors.subject && <div className="help-block with-errors">{errors.subject}</div>}
-        </div>
-        
-        <div className="form-grp">
-          <label htmlFor="message">{t('contact.message')}</label>
-          <textarea 
-            name="message" 
-            id="message"
-            placeholder={t('contact.enterHere')}
-            value={formData.message}
-            onChange={handleInputChange}
-            rows="5"
-            className={errors.message ? 'error' : ''}
-          ></textarea>
-          {errors.message && <div className="help-block with-errors">{errors.message}</div>}
-        </div>
-        
-        <div className="form-btn">
-          <button type="submit" className="btn">
-            {t('contact.makeRequest')}
-          </button>
-        </div>
-      </form>
-    </div>
+    </>
   );
 };
 
