@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLanguage } from '../../context/LanguageContext';
 import { removeProduct, updateQuantity } from '../../store/cart/CartSlice';
 import CartItem from './CartItem';
@@ -7,6 +7,8 @@ import CartItem from './CartItem';
 const CartTable = ({ cart, couponCode, setCouponCode, onApplyCoupon, onUpdateCart }) => {
   const dispatch = useDispatch();
   const { t } = useLanguage();
+
+  
 
   const handleRemoveProduct = (productId) => {
     dispatch(removeProduct(productId));
@@ -22,25 +24,10 @@ const CartTable = ({ cart, couponCode, setCouponCode, onApplyCoupon, onUpdateCar
   };
 
   // Sample cart data for demonstration with proper structure
-  const sampleCartItems = [
-    {
-      id: 1,
-      name: "Antiaging and Longevity",
-      price: 13.00,
-      quantity: 1,
-      image: "/src/assets/img/products/home_shop_thumb01.png"
-    },
-    {
-      id: 2,
-      name: "Time to Explore",
-      price: 19.00,
-      quantity: 1,
-      image: "/src/assets/img/products/home_shop_thumb02.png"
-    }
-  ];
+
 
   // Use sample data if cart is empty or undefined
-  const displayCart = (cart && cart.length > 0) ? cart : sampleCartItems;
+  const displayCart = (cart && cart.length > 0) ? cart : [];
 
   // Filter out any items without proper structure
   const validCartItems = displayCart;
@@ -50,19 +37,14 @@ const CartTable = ({ cart, couponCode, setCouponCode, onApplyCoupon, onUpdateCar
       <table className="table cart__table">
         <thead>
           <tr>
-            <th className="product__thumb d-none d-md-table-cell">&nbsp;</th>
-            <th className="product__name">{t('cart.product')}</th>
-            <th className="product__price d-none d-md-table-cell">{t('cart.price')}</th>
-            <th className="product__quantity">{t('cart.quantity')}</th>
-            <th className="product__subtotal">{t('cart.subtotal')}</th>
-            <th className="product__remove">&nbsp;</th>
+              
           </tr>
         </thead>
         <tbody>
           {validCartItems.length > 0 ? (
             validCartItems.map((item) => (
               <CartItem
-                key={item.id}
+                key={item.productId}
                 item={item}
                 onRemove={handleRemoveProduct}
                 onQuantityChange={handleQuantityChange}

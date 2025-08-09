@@ -1,37 +1,27 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { addProduct } from '../../store/cart/CartSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product, onAddToCart }) => {
   const { t } = useLanguage();
-
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 0; i < 5; i++) {
-      if (i < fullStars) {
-        stars.push(<i key={i} className="fas fa-star"></i>);
-      } else if (i === fullStars && hasHalfStar) {
-        stars.push(<i key={i} className="fas fa-star-half-alt"></i>);
-      } else {
-        stars.push(<i key={i} className="far fa-star"></i>);
-      }
-    }
-    return stars;
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    onAddToCart(product);
+    dispatch(addProduct(product._id));
+    navigate('/cart');
   };
 
-
+  
+  
 
   return (
     <div className="home-shop-item inner-shop-item" style={{borderRadius: '10px',overflow: 'hidden'}}>
       <div className="home-shop-thumb">
-        <a href={`/product/${product.id}`}>
+        <a href={`/product/${product._id}`}>
           <img src={product.image2} alt={product.name}  style={{width: '250px', height: '250px',objectFit: 'cover'}}/>
           {product.discount && (
             <span className="discount"> -{product.discount}%</span>
@@ -58,7 +48,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           >
             <i className="flaticon-shopping-cart-1"></i>
           </a> */}
-          <a href={`/product/${product.id}`} className="btn">
+          <a  className="btn" onClick={handleAddToCart}>
             {t('shop.buyNow')}
           </a>
         </div>

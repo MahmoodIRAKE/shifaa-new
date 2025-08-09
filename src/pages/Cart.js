@@ -6,13 +6,16 @@ import CartTotals from '../components/cart/CartTotals';
 import BreadcrumbArea from '../components/common/BreadcrumbArea';
 import '../assets/css/style.css';
 import '../assets/css/responsive.css';
+import { selectCart } from '../store/cart/CartSelectores';
 
 const Cart = () => {
   const [couponCode, setCouponCode] = useState('');
-  const cart = useSelector(state => state.cart.cart);
+  const cart = useSelector(selectCart);
   const dispatch = useDispatch();
   const { t } = useLanguage();
-
+  
+  console.log("cart",cart);
+  
   const handleApplyCoupon = (e) => {
     e.preventDefault();
     // Handle coupon application logic here
@@ -46,6 +49,7 @@ const Cart = () => {
                 setCouponCode={setCouponCode}
                 onApplyCoupon={handleApplyCoupon}
                 onUpdateCart={handleUpdateCart}
+
               />
             </div>
             <div className="col-lg-4">

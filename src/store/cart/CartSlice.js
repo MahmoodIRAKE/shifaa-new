@@ -32,6 +32,18 @@ export const CartSlice = createSlice({
                 state.cart.push({ productId, quantity: 1 });
             }
         },
+        addProductWithQuantity: (state, action) => {
+          const {productId,quantity} = action.payload; // action.payload is the product ID
+          const existingProduct = state.cart.find(item => item.productId === productId);
+      
+          if (existingProduct) {
+              // If product exists, increase quantity 
+              existingProduct.quantity += quantity;
+          } else {
+              // If product doesn't exist, add it with quantity 1
+              state.cart.push({ productId, quantity: quantity });
+          }
+      },
             // Remove Product (completely from the cart)
     removeProduct: (state, action) => {
         const productId = action.payload;
@@ -78,5 +90,5 @@ export const CartSlice = createSlice({
     },
   });
   
-export const { addProduct,updateQuantity,removeProduct,setCustomer,setAreas,setCreditUrl,setPaymentType,setFilledCustomer,setResetCart,setCouponCode,setCouponDiscount} =  CartSlice.actions;
+export const { addProduct,updateQuantity,removeProduct,setCustomer,setAreas,setCreditUrl,setPaymentType,setFilledCustomer,setResetCart,setCouponCode,setCouponDiscount,addProductWithQuantity} =  CartSlice.actions;
 export default CartSlice.reducer;

@@ -268,7 +268,7 @@ const ProductTabs = ({ product, activeTab, onTabChange }) => {
                     {product.howToUseInfo || product.specifications?.dosage || 'كبسولتين في اليوم'}
                   </td>
                 </tr>
-                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                {/* <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
                   <th scope="row" style={{ 
                     padding: '15px 20px',
                     backgroundColor: '#f8f9fa',
@@ -281,7 +281,7 @@ const ProductTabs = ({ product, activeTab, onTabChange }) => {
                   <td style={{ padding: '15px 20px', color: '#555', textAlign: 'center' }}>
                     {product.specifications?.expiryDate || 'Dec 2025'}
                   </td>
-                </tr>
+                </tr> */}
                 <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
                   <th scope="row" style={{ 
                     padding: '15px 20px',
@@ -310,7 +310,7 @@ const ProductTabs = ({ product, activeTab, onTabChange }) => {
                     ₪{product.price}
                   </td>
                 </tr>
-                {product.discountForTwo && (
+                {/* {product.discountForTwo && (
                   <tr>
                     <th scope="row" style={{ 
                       padding: '15px 20px',
@@ -325,7 +325,7 @@ const ProductTabs = ({ product, activeTab, onTabChange }) => {
                       {product.discountForTwo}% off
                     </td>
                   </tr>
-                )}
+                )} */}
               </tbody>
             </table>
           </div>
