@@ -23,7 +23,11 @@ const OrderSummary = ({ cart, onPlaceOrder }) => {
     return total + (price * quantity);
   }, 0);
 
-  const total = subtotal; // Add tax, shipping, etc. here if needed
+  // Delivery fee constant
+  const deliveryFee = 30;
+  
+  // Calculate total including delivery fee
+  const total = subtotal + deliveryFee;
 
   return (
     <div className="order__info-wrap">
@@ -36,15 +40,18 @@ const OrderSummary = ({ cart, onPlaceOrder }) => {
         
         {displayItems.map((item) => (
           <li key={item.id}>
-            {item.name} × {item.quantity || 1} <span>${(item.price * (item.quantity || 1)).toFixed(2)}</span>
+            {item.name} × {item.quantity || 1} <span>₪{(item.price * (item.quantity || 1)).toFixed(2)}</span>
           </li>
         ))}
         
         <li>
-          {t('checkout.subtotal')} <span>${subtotal.toFixed(2)}</span>
+          {t('checkout.subtotal')} <span>₪{subtotal.toFixed(2)}</span>
         </li>
         <li>
-          {t('checkout.total')} <span>${total.toFixed(2)}</span>
+          {t('cart.deTotal')} <span>₪{deliveryFee.toFixed(2)}</span>
+        </li>
+        <li>
+          {t('checkout.total')} <span>₪{total.toFixed(2)}</span>
         </li>
       </ul>
       

@@ -1,0 +1,111 @@
+/* CartTable Styles */
+
+.cart-table-wrapper {
+  position: relative;
+}
+
+/* Coupon Dialog Styles */
+.coupon-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: center;
+  animation: dialogSlideIn 0.3s ease-out;
+}
+
+.coupon-dialog.success {
+  border-left: 4px solid #28a745;
+}
+
+.coupon-dialog.error {
+  border-left: 4px solid #dc3545;
+}
+
+.coupon-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.coupon-dialog-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.coupon-dialog.success .coupon-dialog-icon {
+  background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.coupon-dialog.error .coupon-dialog-icon {
+  background: linear-gradient(135deg, #dc3545, #e74c3c);
+}
+
+.coupon-dialog-message {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Animation for dialog */
+@keyframes dialogSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .coupon-dialog {
+    min-width: 280px;
+    max-width: 90vw;
+    margin: 0 20px;
+    padding: 20px;
+  }
+  
+  .coupon-dialog-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .coupon-dialog-message {
+    font-size: 14px;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .coupon-dialog {
+  text-align: center;
+}
+
+[dir="rtl"] .coupon-dialog.success {
+  border-left: none;
+  border-right: 4px solid #28a745;
+}
+
+[dir="rtl"] .coupon-dialog.error {
+  border-left: none;
+  border-right: 4px solid #dc3545;
+}

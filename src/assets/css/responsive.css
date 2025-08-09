@@ -1597,9 +1597,11 @@
 .cart__table tbody td.product__quantity {
     text-align: right;
     padding-right: 0;
+	
 }
 .cart__table .quickview-cart-plus-minus {
     margin: 0;
+
 }
 .update__cart-btn {
     text-align: center !important;

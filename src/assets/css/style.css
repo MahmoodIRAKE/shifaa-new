@@ -6071,7 +6071,62 @@ body.search-visible {
     padding: 17px 35px;
     line-height: 1;
 	margin-bottom: 10px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
 }
+
+/* Responsive styles for btn-sm */
+@media (max-width: 768px) {
+    .btn-sm {
+        padding: 16px 24px;
+        font-size: 16px;
+        min-height: 56px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-sm {
+        padding: 18px 20px;
+        font-size: 16px;
+        min-height: 60px;
+        border-radius: 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .btn-sm {
+        padding: 15px 22px;
+        font-size: 15px;
+        min-height: 52px;
+    }
+}
+
+/* Touch device optimizations for btn-sm */
+@media (hover: none) and (pointer: coarse) {
+    .btn-sm {
+        min-height: 56px;
+        padding: 16px 20px;
+    }
+    
+    .btn-sm:hover {
+        transform: none;
+    }
+    
+    .btn-sm:active {
+        transform: scale(0.98);
+    }
+}
+
 .btn-primary-checkout{
 	background-color: #63af21;
 	color: #fff;

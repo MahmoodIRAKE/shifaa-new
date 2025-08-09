@@ -1,25 +1,17 @@
 import React, { useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectProducts, selectProductsLoading } from '../../store/Products/ProductsSelectors';
+import { selectProducts } from '../../store/Products/ProductsSelectors';
 import { getProductsThunk } from '../../store/Products/ProductsThunk';
 import './Section1.css';
 
 const Section1 = () => {
   const { t } = useLanguage();
-  const products = useSelector(selectProducts) || [];
-  const loading = useSelector(selectProductsLoading);
+  const products = useSelector(selectProducts)
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // Only dispatch if products array is empty or undefined
-    if (!products || products.length === 0) {
-      dispatch(getProductsThunk());
-    }
-  }, [dispatch]); // Remove products from dependency array to avoid infinite loops
 
-  // Check if we have a valid product with an image
-  const hasValidProduct = Array.isArray(products) && products.length > 0 && products[0] && products[0].image;
+ 
 
   return (
     <section className="banner-area">
@@ -36,23 +28,7 @@ const Section1 = () => {
         <div className="row">
           <div className="col-12">
             <div className="banner-images text-center">
-              {hasValidProduct ? (
-                <img src={products[0].image} alt="img" className="main-img" />
-              ) : (
-                <div className="main-img-placeholder" style={{ 
-                  width: '300px', 
-                  height: '300px', 
-                  margin: '0 auto',
-                  backgroundColor: '#f5f5f5',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: '10px',
-                  color: '#666'
-                }}>
-                  {loading ? 'Loading...' : 'No product image available'}
-                </div>
-              )}
+              <img src={products[0]?.image} alt="img" className="main-img" />
               <img src={require("../../assets/img/banner/banner_round_bg.png")} alt="img" className="bg-shape1" />
             </div>
           </div>
@@ -64,6 +40,7 @@ const Section1 = () => {
       <div className="banner-shape two">
         <img src={require("../../assets/img/banner/banner_shape02.png")} alt="shape" className="wow bannerFadeInRight" data-wow-delay=".2s" data-wow-duration="2s" />
       </div>
+
     </section>
   );
 };
