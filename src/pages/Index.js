@@ -27,7 +27,7 @@ const Home = () => {
   const error = useSelector(selectProductsError);
   const errorMessage = useSelector(selectProductsErrorMessage);
   const dispatch = useDispatch();
-  
+  console.log(products);
   const handleAccordionToggle = (target) => {
     setActiveAccordion(activeAccordion === target ? '' : target);
   };
@@ -95,10 +95,6 @@ const Home = () => {
         </div>
       </div> */}
 
-      {/* Scroll-top */}
-      <button className="scroll-top scroll-to-target" data-target="html">
-        <i className="fas fa-angle-up"></i>
-      </button>
 
       <Header />
       {/* Banner Area */}

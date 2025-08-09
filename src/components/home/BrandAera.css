@@ -34,8 +34,9 @@
 .brand-track {
   display: flex;
   align-items: center;
-  gap: 40px;
-  animation: slideBrands 50s linear infinite;
+  /* margin-top: -20px; */
+  /* gap: 40px; */
+  animation: slideBrands 60s linear infinite;
   width: max-content;
 }
 
@@ -56,8 +57,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -88,8 +89,8 @@
 }
 
 .brand-logo img {
-  max-width: 80%;
-  max-height: 60%;
+  max-width: 85%;
+  max-height: 70%;
   object-fit: contain;
   filter: grayscale(100%);
   transition: all 0.3s ease;
@@ -141,20 +142,20 @@
   }
   
   .brand-logo {
-    width: 100px;
-    height: 70px;
+    width: 150px;
+    height: 150px;
   }
 }
 
 @media (max-width: 992px) {
   .brand-track {
     gap: 25px;
-    animation-duration: 25s;
+    animation-duration: 45s;
   }
   
   .brand-logo {
-    width: 90px;
-    height: 60px;
+    width: 130px;
+    height: 130px;
   }
   
   .brand-title .title {
@@ -169,12 +170,12 @@
   
   .brand-track {
     gap: 20px;
-    animation-duration: 20s;
+    animation-duration: 40s;
   }
   
   .brand-logo {
-    width: 80px;
-    height: 50px;
+    width: 110px;
+    height: 110px;
   }
   
   .brand-title .title {
@@ -185,12 +186,12 @@
 @media (max-width: 480px) {
   .brand-track {
     gap: 15px;
-    animation-duration: 15s;
+    animation-duration: 35s;
   }
   
   .brand-logo {
-    width: 70px;
-    height: 45px;
+    width: 90px;
+    height: 90px;
   }
   
   .brand-title .title {

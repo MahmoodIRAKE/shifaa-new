@@ -129,6 +129,7 @@
       "filter": "تصفية",
       "sort": "ترتيب",
       "addToCart": "أضف للسلة",
+      "buyNow": "اشتري الآن",
       "viewDetails": "عرض التفاصيل",
       "price": "السعر",
       "category": "الفئة"
@@ -308,6 +309,7 @@
       "filter": "סינון",
       "sort": "מיון",
       "addToCart": "הוסף לעגלה",
+      "buyNow": "קנה עכשיו",
       "viewDetails": "צפה בפרטים",
       "price": "מחיר",
       "category": "קטגוריה"

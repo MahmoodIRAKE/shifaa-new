@@ -11,7 +11,7 @@ const Section1 = () => {
   const dispatch = useDispatch();
 
 
-  console.log(products[0]);
+ 
 
   return (
     <section className="banner-area">

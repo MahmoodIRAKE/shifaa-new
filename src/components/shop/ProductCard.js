@@ -26,56 +26,39 @@ const ProductCard = ({ product, onAddToCart }) => {
     onAddToCart(product);
   };
 
-  const getCategoryName = (category) => {
-    const categoryMap = {
-      'nutrition': t('shop.categories.nutrition'),
-      'body-fit': t('shop.categories.bodyFit'),
-      'fat-burners': t('shop.categories.fatBurners'),
-      'protein': t('shop.categories.protein'),
-      'burners': t('shop.categories.burners')
-    };
-    return categoryMap[category] || category;
-  };
+
 
   return (
-    <div className="home-shop-item inner-shop-item">
+    <div className="home-shop-item inner-shop-item" style={{borderRadius: '10px',overflow: 'hidden'}}>
       <div className="home-shop-thumb">
         <a href={`/product/${product.id}`}>
-          <img src={product.image} alt={product.name} />
+          <img src={product.image2} alt={product.name}  style={{width: '250px', height: '250px',objectFit: 'cover'}}/>
           {product.discount && (
             <span className="discount"> -{product.discount}%</span>
           )}
         </a>
       </div>
       <div className="home-shop-content">
-        <div className="shop-item-cat">
-          <a href={`/shop?category=${product.category}`}>
-            {getCategoryName(product.category)}
-          </a>
-        </div>
         <h4 className="title">
           <a href={`/product/${product.id}`}>{product.name}</a>
         </h4>
         <span className="home-shop-price">
-          ${product.price.toFixed(2)}
+          ₪{product.price.toFixed(2)}
           {product.originalPrice && (
-            <span className="original-price">${product.originalPrice.toFixed(2)}</span>
+            <span className="original-price">₪{product.originalPrice.toFixed(2)}</span>
           )}
         </span>
-        <div className="home-shop-rating">
-          {renderStars(product.rating)}
-          <span className="total-rating">({product.totalRatings})</span>
-        </div>
-        <div className="shop-content-bottom">
-          <a 
+   
+        <div className="shop-content-bottom" style={{display: 'flex',gap: '10px',justifyContent: 'center',alignItems: 'center',}}>
+          {/* <a 
             href="#" 
-            className="cart" 
+            className="cart btn" 
             onClick={handleAddToCart}
             title={t('shop.addToCart')}
           >
             <i className="flaticon-shopping-cart-1"></i>
-          </a>
-          <a href={`/product/${product.id}`} className="btn btn-two">
+          </a> */}
+          <a href={`/product/${product.id}`} className="btn">
             {t('shop.buyNow')}
           </a>
         </div>

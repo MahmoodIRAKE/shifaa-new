@@ -2,212 +2,332 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 
 const ProductTabs = ({ product, activeTab, onTabChange }) => {
-  const { t } = useLanguage();
-  const [reviewForm, setReviewForm] = useState({
-    name: '',
-    email: '',
-    rating: 5,
-    comment: '',
-    hideEmail: false
-  });
+  const { t, language } = useLanguage();
 
-  const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      if (i < rating) {
-        stars.push(<i key={i} className="fas fa-star"></i>);
-      } else {
-        stars.push(<i key={i} className="far fa-star"></i>);
-      }
+  // Translation keys for titles and text
+  const translations = {
+    description: {
+      en: "Description",
+      he: "תיאור",
+      ar: "الوصف"
+    },
+    ingredients: {
+      en: "Ingredients",
+      he: "מרכיבים",
+      ar: "المكونات"
+    },
+    additionalInfo: {
+      en: "Additional information",
+      he: "מידע נוסף",
+      ar: "معلومات إضافية"
+    },
+    reviews: {
+      en: "Reviews",
+      he: "ביקורות",
+      ar: "التقييمات"
+    },
+    trueStrength: {
+      en: "THE TRUE STRENGTH OF",
+      he: "הכוח האמיתי של",
+      ar: "القوة الحقيقية لـ"
+    },
+    basics: {
+      en: "THE BASICS:",
+      he: "הבסיס:",
+      ar: "الأساسيات:"
+    },
+    benefits: {
+      en: "BENEFITS:",
+      he: "היתרונות:",
+      ar: "الفوائد:"
+    },
+    productInfo: {
+      en: "PRODUCT INFORMATION",
+      he: "معلومات المنتج",
+      ar: "معلومات المنتج"
+    },
+    productType: {
+      en: "Product Type",
+      he: "نوع المنتج",
+      ar: "نوع المنتج"
+    },
+    dosage: {
+      en: "Dosage",
+      he: "الجرعة",
+      ar: "الجرعة"
+    },
+    expiryDate: {
+      en: "Expiry Date",
+      he: "تاريخ انتهاء الصلاحية",
+      ar: "تاريخ انتهاء الصلاحية"
+    },
+    company: {
+      en: "Company",
+      he: "الشركة",
+      ar: "الشركة"
+    },
+    price: {
+      en: "Price",
+      he: "السعر",
+      ar: "السعر"
+    },
+    discount: {
+      en: "Discount for 2+",
+      he: "خصم لـ 2+",
+      ar: "خصم لـ 2+"
     }
-    return stars;
   };
 
-  const handleReviewSubmit = (e) => {
-    e.preventDefault();
-    console.log('Review submitted:', reviewForm);
-    // Here you would typically send the review to your backend
-    alert(t('shopDetails.reviewSubmitted'));
-    setReviewForm({
-      name: '',
-      email: '',
-      rating: 5,
-      comment: '',
-      hideEmail: false
-    });
-  };
-
-  const handleReviewInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setReviewForm(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
-
-  const handleRatingClick = (rating) => {
-    setReviewForm(prev => ({
-      ...prev,
-      rating
-    }));
+  const getTranslation = (key) => {
+    return translations[key]?.[language] || translations[key]?.en || key;
   };
 
   return (
-    <div className="product-desc-wrap">
-      <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-        <li className="nav-item">
-          <button
-            className={`nav-link ${activeTab === 'description' ? 'active' : ''}`}
-            id="description-tab"
-            onClick={() => onTabChange('description')}
-          >
-            {t('shopDetails.tabs.description')}
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            className={`nav-link ${activeTab === 'information' ? 'active' : ''}`}
-            id="information-tab"
-            onClick={() => onTabChange('information')}
-          >
-            {t('shopDetails.tabs.additionalInfo')}
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            className={`nav-link ${activeTab === 'review' ? 'active' : ''}`}
-            id="review-tab"
-            onClick={() => onTabChange('review')}
-          >
-            {t('shopDetails.tabs.reviews')} ({product.reviews.length})
-          </button>
-        </li>
-      </ul>
+    <div className="product-desc-wrap" style={{ 
+      padding: '40px', 
+      backgroundColor: '#fff', 
+      borderRadius: '15px', 
+      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+      marginTop: '30px',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      textAlign: 'center'
+    }}>
       
-      <div className="tab-content" id="myTabContentTwo">
+      <div className="tab-content" id="myTabContentTwo" style={{ width: '100%', textAlign: 'center' }}>
         {/* Description Tab */}
         <div className={`tab-pane fade ${activeTab === 'description' ? 'show active' : ''}`} 
              id="description" role="tabpanel" aria-labelledby="description-tab">
-          <div className="product-desc-content">
-            <h4 className="title">{t('shopDetails.description.title1')}</h4>
-            <p>{t('shopDetails.description.paragraph1')}</p>
-            <h4 className="title">{t('shopDetails.description.title2')}</h4>
-            <ul className="product-desc-list list-wrap">
-              {t('shopDetails.description.features', { returnObjects: true }).map((feature, index) => (
-                <li key={index}>{feature}</li>
+          <div className="product-desc-content" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h4 className="title" style={{ 
+              fontSize: '24px', 
+              fontWeight: 'bold', 
+              color: '#333', 
+              marginBottom: '20px',
+              textAlign: 'center'
+            }}>
+              {getTranslation('trueStrength')} {product.name.toUpperCase()}:
+            </h4>
+            <p style={{ 
+              fontSize: '16px', 
+              lineHeight: '1.8', 
+              color: '#555', 
+              marginBottom: '30px',
+              textAlign: 'center'
+            }}>
+              {product.mainDescription}
+            </p>
+           
+            <h4 className="title" style={{ 
+              fontSize: '24px', 
+              fontWeight: 'bold', 
+              color: '#333', 
+              marginTop: '30px',
+              marginBottom: '20px',
+              textAlign: 'center'
+            }}>
+              {getTranslation('benefits')}
+            </h4>
+            <div style={{ 
+              whiteSpace: 'pre-line',
+              fontSize: '16px',
+              lineHeight: '1.8',
+              color: '#555',
+              textAlign: 'center',
+              maxWidth: '700px',
+              margin: '0 auto',
+              padding: '20px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '8px'
+            }}>
+              {product.extraDescription}
+            </div>
+          </div>
+        </div>
+
+        {/* Ingredients Tab */}
+        <div className={`tab-pane fade ${activeTab === 'ingredients' ? 'show active' : ''}`} 
+             id="ingredients" role="tabpanel" aria-labelledby="ingredients-tab">
+          <div className="product-desc-content" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h4 className="title" style={{ 
+              fontSize: '24px', 
+              fontWeight: 'bold', 
+              color: '#333', 
+              marginBottom: '30px',
+              textAlign: 'center'
+            }}>
+              {getTranslation('ingredients')}
+            </h4>
+            <div className="ingredients-list" style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+              {product.ingredientsIds && product.ingredientsIds.map((ingredient, index) => (
+                <div key={ingredient._id || index} className="ingredient-item" style={{ 
+                  padding: '25px', 
+                  border: '2px solid #e0e0e0', 
+                  borderRadius: '12px',
+                  backgroundColor: '#fff',
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  maxWidth: '600px',
+                  margin: '0 auto',
+                  width: '100%',
+                  textAlign: 'center'
+                }}
+                onMouseOver={(e) => e.target.style.borderColor = '#20B764'}
+                onMouseOut={(e) => e.target.style.borderColor = '#e0e0e0'}
+                >
+                  <h5 style={{ 
+                    color: '#20B764', 
+                    marginBottom: '15px',
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    textAlign: 'center'
+                  }}>
+                    {ingredient.ingredientName}
+                  </h5>
+                  <p style={{ 
+                    margin: 0, 
+                    lineHeight: '1.8',
+                    fontSize: '16px',
+                    color: '#555',
+                    textAlign: 'center'
+                  }}>
+                    {ingredient.ingredientDescription}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
         {/* Information Tab */}
         <div className={`tab-pane fade ${activeTab === 'information' ? 'show active' : ''}`} 
              id="information" role="tabpanel" aria-labelledby="information-tab">
-          <div className="product-desc-content">
-            <table className="table table-sm">
+          <div className="product-desc-content" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h4 className="title" style={{ 
+              fontSize: '24px', 
+              fontWeight: 'bold', 
+              color: '#333', 
+              marginBottom: '30px',
+              textAlign: 'center'
+            }}>
+              {getTranslation('productInfo')}
+            </h4>
+            <table className="table table-sm" style={{ 
+              width: '100%',
+              borderCollapse: 'collapse',
+              backgroundColor: '#fff',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+              margin: '0 auto'
+            }}>
               <tbody>
-                {Object.entries(product.specifications).map(([key, value]) => (
-                  <tr key={key}>
-                    <th scope="row">{t(`shopDetails.specifications.${key}`)}</th>
-                    <td>{value}</td>
+                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                  <th scope="row" style={{ 
+                    padding: '15px 20px',
+                    backgroundColor: '#f8f9fa',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center',
+                    width: '30%'
+                  }}>
+                    {getTranslation('productType')}
+                  </th>
+                  <td style={{ padding: '15px 20px', color: '#555', textAlign: 'center' }}>
+                    {product.specifications?.type || 'Natural Supplement'}
+                  </td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                  <th scope="row" style={{ 
+                    padding: '15px 20px',
+                    backgroundColor: '#f8f9fa',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center'
+                  }}>
+                    {getTranslation('ingredients')}
+                  </th>
+                  <td style={{ padding: '15px 20px', color: '#555', textAlign: 'center' }}>
+                    {product.specifications?.ingredients || 'حبة البركة، سبيرولينا'}
+                  </td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                  <th scope="row" style={{ 
+                    padding: '15px 20px',
+                    backgroundColor: '#f8f9fa',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center'
+                  }}>
+                    {getTranslation('dosage')}
+                  </th>
+                  <td style={{ padding: '15px 20px', color: '#555', textAlign: 'center' }}>
+                    {product.howToUseInfo || product.specifications?.dosage || 'كبسولتين في اليوم'}
+                  </td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                  <th scope="row" style={{ 
+                    padding: '15px 20px',
+                    backgroundColor: '#f8f9fa',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center'
+                  }}>
+                    {getTranslation('expiryDate')}
+                  </th>
+                  <td style={{ padding: '15px 20px', color: '#555', textAlign: 'center' }}>
+                    {product.specifications?.expiryDate || 'Dec 2025'}
+                  </td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                  <th scope="row" style={{ 
+                    padding: '15px 20px',
+                    backgroundColor: '#f8f9fa',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center'
+                  }}>
+                    {getTranslation('company')}
+                  </th>
+                  <td style={{ padding: '15px 20px', color: '#555', textAlign: 'center' }}>
+                    {product.specifications?.company || 'Shifaa'}
+                  </td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
+                  <th scope="row" style={{ 
+                    padding: '15px 20px',
+                    backgroundColor: '#f8f9fa',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    textAlign: 'center'
+                  }}>
+                    {getTranslation('price')}
+                  </th>
+                  <td style={{ padding: '15px 20px', color: '#555', fontWeight: 'bold', textAlign: 'center' }}>
+                    ₪{product.price}
+                  </td>
+                </tr>
+                {product.discountForTwo && (
+                  <tr>
+                    <th scope="row" style={{ 
+                      padding: '15px 20px',
+                      backgroundColor: '#f8f9fa',
+                      fontWeight: 'bold',
+                      color: '#333',
+                      textAlign: 'center'
+                    }}>
+                      {getTranslation('discount')}
+                    </th>
+                    <td style={{ padding: '15px 20px', color: '#20B764', fontWeight: 'bold', textAlign: 'center' }}>
+                      {product.discountForTwo}% off
+                    </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
-          </div>
-        </div>
-
-        {/* Review Tab */}
-        <div className={`tab-pane fade ${activeTab === 'review' ? 'show active' : ''}`} 
-             id="review" role="tabpanel" aria-labelledby="review-tab">
-          <div className="product-desc-content">
-            <div className="reviews-comment">
-              {product.reviews.map((review) => (
-                <div key={review.id} className="review-info">
-                  <div className="review-img">
-                    <img src={review.image} alt={review.name} />
-                  </div>
-                  <div className="review-content">
-                    <ul className="review-rating list-wrap">
-                      <li>
-                        {renderStars(review.rating)}
-                      </li>
-                    </ul>
-                    <div className="review-meta">
-                      <h6>{review.name} <span>-{review.date}</span></h6>
-                    </div>
-                    <p>{review.comment}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="add-review">
-              <h4 className="title">{t('shopDetails.addReview.title')}</h4>
-              <form onSubmit={handleReviewSubmit}>
-                <p>{t('shopDetails.addReview.description')}</p>
-                <div className="from-grp">
-                  <label htmlFor="name">{t('shopDetails.addReview.name')} <span>*</span></label>
-                  <input 
-                    type="text" 
-                    id="name"
-                    name="name"
-                    value={reviewForm.name}
-                    onChange={handleReviewInputChange}
-                    required
-                  />
-                </div>
-                <div className="from-grp">
-                  <label htmlFor="email">{t('shopDetails.addReview.email')} <span>*</span></label>
-                  <input 
-                    type="email" 
-                    id="email"
-                    name="email"
-                    value={reviewForm.email}
-                    onChange={handleReviewInputChange}
-                    required
-                  />
-                </div>
-                <div className="from-grp checkbox-grp">
-                  <input 
-                    type="checkbox" 
-                    id="hideEmail"
-                    name="hideEmail"
-                    checked={reviewForm.hideEmail}
-                    onChange={handleReviewInputChange}
-                  />
-                  <label htmlFor="hideEmail">{t('shopDetails.addReview.hideEmail')}</label>
-                </div>
-                <div className="form-rating">
-                  <label>{t('shopDetails.addReview.rating')}</label>
-                  <ul className="list-wrap">
-                    <li>
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <i 
-                          key={star}
-                          className={`${star <= reviewForm.rating ? 'fas' : 'far'} fa-star`}
-                          onClick={() => handleRatingClick(star)}
-                          style={{ cursor: 'pointer' }}
-                        ></i>
-                      ))}
-                    </li>
-                  </ul>
-                </div>
-                <div className="from-grp">
-                  <label htmlFor="comment">{t('shopDetails.addReview.comment')} <span>*</span></label>
-                  <textarea 
-                    id="comment" 
-                    name="comment"
-                    value={reviewForm.comment}
-                    onChange={handleReviewInputChange}
-                    cols="30" 
-                    rows="10"
-                    required
-                  ></textarea>
-                </div>
-                <button type="submit" className="btn">{t('shopDetails.addReview.submit')}</button>
-              </form>
-            </div>
           </div>
         </div>
       </div>

@@ -12,73 +12,108 @@ import '../assets/css/style.css';
 import '../assets/css/responsive.css';
 
 const ShopDetails = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const dispatch = useDispatch();
   const { productId } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
 
-  // Sample product data (in a real app, this would come from an API)
+  // Translation keys for breadcrumb
+  const translations = {
+    home: {
+      en: "Home",
+      he: "בית",
+      ar: "الرئيسية"
+    },
+    shop: {
+      en: "Shop",
+      he: "متجر",
+      ar: "المتجر"
+    }
+  };
+
+  const getTranslation = (key) => {
+    return translations[key]?.[language] || translations[key]?.en || key;
+  };
+
+  // Sample product data matching the new JSON structure
   const product = {
-    id: productId || 1,
-    name: t('shopDetails.product.name'),
-    brand: 'Suxnix',
-    price: 29.99,
-    originalPrice: 39.99,
-    rating: 4.5,
-    totalReviews: 3,
+    _id: "67dc66be3c1404ad4cc71add",
+    title: "Baraka for life",
+    name: "Baraka for life",
+    mainDescription: "Life for Baraka ﻫﻮ ﻣﻜﻤﻞ ﻏﺬاﺋﻲ ﻃﺒﻴﻌﻲ ﻣﺴﺘﺨﻠﺺ ﻣﻦ ﺣﺒﺔ اﻟﱪﻛﺔ (الحبه السوداء) ، ﻣﺼﻤﻢ ﻟﺪﻋﻢ اﻟﻤﻨﺎﻋﺔ، اﻟﻄﺎﻗﺔ، وﺻﺤﺔ اﻟﺠﻬﺎز اﻟﻬﻀﻤﻲ ﺑﻄﺮﻳﻘﺔ ﻃﺒﻴﻌﻴﺔ وآﻣﻨﺔ. ﺗﻢ ﺗﻄﻮﻳﺮ ﻫﺬا اﻟﻤﻨﺘﺞ ﺑﻌﻨﺎﻳﺔ ﻟﻴﻤﻨﺢ اﻟﺠﺴﻢ اﻟﻘﻮة واﻻﺗﺰان ﻋﱪ ﺗﻮﻓﲑ ﻣﻀﺎدات أﻛﺴﺪة ﻃﺒﻴﻌﻴﺔ، أﺣﻤﺎض دﻫﻨﻴﺔ أﺳﺎﺳﻴﺔ، وﻋﻨﺎﴏ ﻏﺬاﺋﻴﺔ ﺗﺪﻋﻢ اﻟﺼﺤﺔ اﻟﻌﺎﻣﺔ.",
+    ingredientsIds: [
+      {
+        _id: "67dc65693c1404ad4cc71ac5",
+        ingredientName: "حبة البركة ",
+        ingredientDescription: "كنز من الطبيعة ،تعزز المناعة، تقلل الالتهابات، وتحمي من الأمراض",
+        active: true
+      },
+      {
+        _id: "67dc65823c1404ad4cc71ac9",
+        ingredientName: "سبيرولينا ",
+        ingredientDescription: "مصدر طبيعي للطاقة، غني بالفيتامينات والمعادن، يدعم صحة الدم ",
+        active: true
+      }
+    ],
+    extraDescription: "-  ﻳﻌﺰز اﻟﻤﻨﺎﻋﺔ اﻟﻄﺒﻴﻌﻴﺔ، ﻣﻤﺎ ﻳﺴﺎﻋﺪ ﻓﻲ اﻟﺤﻤﺎﻳﺔ ﻣﻦ اﻟﻔﲑوﺳﺎت واﻟﺒﻜﺘﲑﻳﺎ. -  ﻳﺪﻋﻢ ﺻﺤﺔ اﻟﻘﻠﺐ ﻋﱪ ﺗﻘﻠﻴﻞ ﻣﺴﺘﻮﻳﺎت اﻟﻜﻮﻟﻴﺴﱰول اﻟﻶر وﺗﺤﺴﲔ ﺗﺪﻓﻖ اﻟﺪم. -  يدعم اﻟﻬﻀﻢ وﻳﺴﺎﻋﺪ ﻓﻲ ﺗﻘﻠﻴﻞ ﻣﺸﺎﻛﻞ اﻟﺠﻬﺎز اﻟﻬﻀﻤﻲ ﻣﺜﻞ اﻻﻧﺘﻔﺎخ واﻟﺘﻬﺎﺑﺎت اﻷﻣﻌﺎء.",
+    active: true,
+    price: 275,
+    isApproved: true,
+    image: "https://firebasestorage.googleapis.com/v0/b/shifaa-1a2e4.firebasestorage.app/o/2.png?alt=media&token=93bec75a-1ead-44cc-a2b5-76aa5480abf7",
+    image2: "https://firebasestorage.googleapis.com/v0/b/shifaa-1a2e4.firebasestorage.app/o/Baraka600.png?alt=media&token=03657fcd-6a30-4ec4-baaf-24ed70c96c25",
+    howToUseInfo: "كبسولتين في اليوم مع كاسة ماء",
+    discountForTwo: 10,
+    // Additional fields for compatibility
+    id: "67dc66be3c1404ad4cc71add",
+    brand: 'Shifaa',
+    originalPrice: 300,
+    rating: 4.8,
+    totalReviews: 5,
     stockStatus: 'in-stock',
-    productId: 'QZX8VGH',
-    description: t('shopDetails.product.description'),
+    productId: 'BARAKA001',
     images: [
-      '/src/assets/img/products/shop-details-thumb01.png',
-      '/src/assets/img/products/shop-details-thumb02.png',
-      '/src/assets/img/products/shop-details-thumb03.png',
-      '/src/assets/img/products/shop-details-thumb04.png'
+      "https://firebasestorage.googleapis.com/v0/b/shifaa-1a2e4.firebasestorage.app/o/Baraka600.png?alt=media&token=03657fcd-6a30-4ec4-baaf-24ed70c96c25",
+      "https://firebasestorage.googleapis.com/v0/b/shifaa-1a2e4.firebasestorage.app/o/2.png?alt=media&token=93bec75a-1ead-44cc-a2b5-76aa5480abf7"
     ],
     details: {
-      type: t('shopDetails.product.details.type'),
-      expiryDate: '19 Dec 2024',
-      company: 'Suxnix'
+      type: 'Natural Supplement',
+      expiryDate: 'Dec 2025',
+      company: 'Shifaa'
     },
-    categories: ['Vitamin', 'Protein', 'Capsule', 'Powder'],
-    tags: ['Natural Vitamin'],
+    categories: ['Natural', 'Immunity', 'Energy', 'Digestive Health'],
+    tags: ['Natural Supplement', 'Immunity Booster'],
     specifications: {
-      calories: '110',
-      totalFat: '1kg',
-      saturatedFat: '0.5g',
-      cholesterol: '40mg',
-      totalCarbohydrate: '2g',
-      protein: '24g',
-      totalSugars: '2g',
-      sodium: '100mg',
-      calcium: '140 mg',
-      potassium: '160 mg'
+      type: 'Natural Supplement',
+      ingredients: 'حبة البركة، سبيرولينا',
+      dosage: 'كبسولتين في اليوم',
+      expiryDate: 'Dec 2025',
+      company: 'Shifaa'
     },
     reviews: [
       {
         id: 1,
-        name: 'Chenai Simon',
+        name: 'أحمد محمد',
         date: 'May 12, 2024',
         rating: 5,
-        comment: t('shopDetails.reviews.review1'),
+        comment: 'منتج ممتاز! شعرت بتحسن كبير في الطاقة والمناعة بعد استخدامه لمدة أسبوعين.',
         image: '/src/assets/img/others/p_review_img01.jpg'
       },
       {
         id: 2,
-        name: 'Finn Castaneda',
+        name: 'فاطمة علي',
         date: 'June 17, 2024',
         rating: 4,
-        comment: t('shopDetails.reviews.review2'),
+        comment: 'منتج طبيعي وفعال. ساعدني في تحسين صحة الجهاز الهضمي.',
         image: '/src/assets/img/others/p_review_img02.jpg'
       },
       {
         id: 3,
-        name: 'Bayley Robertson',
+        name: 'محمد حسن',
         date: 'May 28, 2024',
-        rating: 4,
-        comment: t('shopDetails.reviews.review3'),
+        rating: 5,
+        comment: 'أفضل مكمل غذائي طبيعي استخدمته. أنصح به بشدة!',
         image: '/src/assets/img/others/p_review_img03.jpg'
       }
     ]
@@ -86,10 +121,10 @@ const ShopDetails = () => {
 
   const handleAddToCart = () => {
     // dispatch(addToCart({
-    //   id: product.id,
+    //   id: product._id,
     //   name: product.name,
     //   price: product.price,
-    //   image: product.images[0],
+    //   image: product.image2,
     //   quantity: quantity
     // }));
   };
@@ -109,29 +144,29 @@ const ShopDetails = () => {
   };
 
   return (
-    <div className="main-area fix">
+    <div className="main-area fix" style={{ textAlign: 'center' }}>
       {/* Breadcrumb Area */}
       <BreadcrumbArea 
-        title={t('shopDetails.title')} 
+        title={product.name} 
         breadcrumbs={[
-          { name: t('nav.home'), link: '/' },
-          { name: t('shop.title'), link: '/shop' },
-          { name: t('shopDetails.title'), link: `/product/${productId}` }
+          { name: getTranslation('home'), link: '/' },
+          { name: getTranslation('shop'), link: '/shop' },
+          { name: product.name, link: `/product/${productId}` }
         ]}
       />
 
       {/* Shop Details Area */}
-      <section className="inner-shop-details-area">
+      <section className="inner-shop-details-area" style={{ textAlign: 'center' }}>
         <div className="container">
-          <div className="row">
-            <div className="col-lg-6">
+          <div className="row" style={{ justifyContent: 'center' }}>
+            <div className="col-lg-6" style={{ display: 'flex', justifyContent: 'center' }}>
               <ProductGallery 
                 images={product.images}
                 selectedImage={selectedImage}
                 onImageSelect={handleImageSelect}
               />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6" style={{ display: 'flex', justifyContent: 'center' }}>
               <ProductInfo 
                 product={product}
                 quantity={quantity}
@@ -140,8 +175,8 @@ const ShopDetails = () => {
               />
             </div>
           </div>
-          <div className="row">
-            <div className="col-12">
+          <div className="row" style={{ justifyContent: 'center' }}>
+            <div className="col-12" style={{ display: 'flex', justifyContent: 'center' }}>
               <ProductTabs 
                 product={product}
                 activeTab={activeTab}
@@ -152,8 +187,7 @@ const ShopDetails = () => {
         </div>
       </section>
 
-      {/* Related Products */}
-      <RelatedProducts />
+   
     </div>
   );
 };
