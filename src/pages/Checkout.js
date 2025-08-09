@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import CheckoutForm from '../components/checkout/CheckoutForm';
 import OrderSummary from '../components/checkout/OrderSummary';
 import CouponCode from '../components/checkout/CouponCode';
+import PaymentMethodSelector from '../components/checkout/PaymentMethodSelector';
 import BreadcrumbArea from '../components/common/BreadcrumbArea';
 import '../assets/css/style.css';
 import '../assets/css/responsive.css';
@@ -39,16 +40,11 @@ const Checkout = () => {
       <div className="checkout__area section-py-130">
         <div className="container">
           <div className="row">
-            <div className="col-12">
-              <CouponCode 
-                couponCode={couponCode}
-                setCouponCode={setCouponCode}
-                showForm={showCouponForm}
-                setShowForm={setShowCouponForm}
-                onApplyCoupon={handleApplyCoupon}
-              />
-            </div>
             <div className="col-lg-7">
+              {/* Payment Method Selector */}
+              <PaymentMethodSelector />
+              
+              {/* Checkout Form */}
               <CheckoutForm />
             </div>
             <div className="col-lg-5">
