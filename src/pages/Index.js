@@ -18,6 +18,10 @@ import {
   selectProductsError, 
   selectProductsErrorMessage 
 } from '../store/Products/ProductsSelectors';
+import { getAreasService } from '../store/cart/CartService.js';
+import { setAreas } from '../store/cart/CartSlice';
+import FIXED_AREAS  from '../constants/areas.js';
+
 
 const Home = () => {
   const { t } = useLanguage();
@@ -27,14 +31,31 @@ const Home = () => {
   const error = useSelector(selectProductsError);
   const errorMessage = useSelector(selectProductsErrorMessage);
   const dispatch = useDispatch();
-  console.log(products);
+ 
   const handleAccordionToggle = (target) => {
     setActiveAccordion(activeAccordion === target ? '' : target);
   };
-
+  const filterAreasByValidNames = (inputAreas) => {
+    const validNames = FIXED_AREAS
+      .map(area => area.name)
+      .filter(name => typeof name === 'string' && name.trim() !== '');
+  
+    return inputAreas.filter(area => validNames.includes(area.name));
+  };
   useEffect(() => {
-    console.log('Home component mounted, dispatching getProductsThunk...');
-    dispatch(getProductsThunk());
+    const fetchData = async () => {
+      console.log('Home component mounted, dispatching getProductsThunk...');
+      dispatch(getProductsThunk());
+ 
+      try {
+        const responseAreas = await getAreasService();
+        dispatch(setAreas(filterAreasByValidNames(responseAreas.data)));
+      } catch (error) {
+        console.error('Error fetching areas:', error);
+      }
+    };
+
+    fetchData();
   }, [dispatch]);
 
   useEffect(() => {

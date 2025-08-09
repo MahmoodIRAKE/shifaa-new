@@ -46,7 +46,7 @@ export const getAreasService=async ()=>{
       console.log("✅ Order created successfully:", response.data);
       return response.data;
     } catch (error) {
-      console.error("❌ Error creating order:", error.response?.data?.message || "فشل إنشاء الطلب");
+      console.error("❌ Error creating order:", error || "فشل إنشاء الطلب");
       throw new Error(error.response?.data?.message || "فشل إنشاء الطلب");
     }
   };

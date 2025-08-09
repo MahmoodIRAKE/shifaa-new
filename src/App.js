@@ -12,6 +12,8 @@ import Contact from './pages/Contact';
 import Shop from './pages/Shop';
 import ShopDetails from './pages/ShopDetails';
 import ArticleItem from './pages/ArticleItem';
+import CreditPayment from './pages/CreditPayment';
+import PaymentSuccess from './pages/PaymentSuccess';
 import './App.css';
 
 
@@ -32,6 +34,8 @@ function AppContent() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:productId" element={<ShopDetails />} />
             <Route path="/article/:articleId" element={<ArticleItem />} />
+            <Route path="/credit-payment" element={<CreditPayment />} />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
             {/* Add more routes here as you create more pages */}
           </Routes>
         </main>

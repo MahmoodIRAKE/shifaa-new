@@ -10,3 +10,5 @@ export const selectCartCouponApplied = (state) => state.cart.couponApplied;
 export const selectCartCouponValid = (state) => state.cart.couponValid;
 export const selectCartCouponExpired = (state) => state.cart.couponExpired;
 export const selectCartCouponInvalid = (state) => state.cart.couponInvalid;
+export const selectAreas = (state) => state.cart.areas;
+export const selectCartPaymentType = (state) => state.cart.paymentType;

@@ -138,7 +138,11 @@
       "updateCart": "تحديث السلة",
       "cartTotals": "إجمالي السلة",
       "proceedToCheckout": "إتمام الطلب",
-      "continueShopping": "تابع التسوق"
+      "continueShopping": "تابع التسوق",
+      "areaRequired": "يرجى تعبئة جميع الحقول المطلوبة: المنطقة، البريد الإلكتروني والموافقة على الشروط للمتابعة.",
+      "orderError": "حدث خطأ أثناء إتمام الطلب. يرجى المحاولة مرة أخرى.",
+      "searchArea": "البحث في المنطقة...",
+      "processingOrder": "جاري إتمام الطلب..."
     },
     "shop": {
       "title": "المتجر",
@@ -155,7 +159,14 @@
       "billingInfo": "معلومات الفواتير",
       "paymentMethod": "طريقة الدفع",
       "orderSummary": "ملخص الطلب",
-      "placeOrder": "إتمام الطلب"
+      "placeOrder": "إتمام الطلب",
+      "yourOrder": "طلبك",
+      "product": "المنتج",
+      "subtotal": "المجموع الفرعي",
+      "total": "المجموع الكلي",
+      "paymentMessage": "سيتم معالجة طلبك فوراً بعد إتمام الدفع.",
+      "privacyMessage": "بإتمام الطلب، أنت توافق على",
+      "privacyPolicy": "سياسة الخصوصية"
     },
     "banner": {
       "caption": "شفاء طبيعي",
@@ -334,7 +345,11 @@
       "updateCart": "עדכון עגלת קניות",
       "cartTotals": "סיכום עגלת קניות",
       "proceedToCheckout": "המשך לתשלום",
-      "continueShopping": "המשך בקניות"
+      "continueShopping": "המשך בקניות",
+      "areaRequired": "יש למלא את כל השדות הנדרשים: האזור, הדואר האלקטרוני והאישור על התנאים להמשך.",
+      "orderError": "הזמנה נכשלה. אנא נסה שוב.",
+      "searchArea": "חיפוש באזור...",
+      "processingOrder": "מעבדת הזמנה..."
     },
     "shop": {
       "title": "חנות",
@@ -351,7 +366,14 @@
       "billingInfo": "פרטי חשבונית",
       "paymentMethod": "אמצעי תשלום",
       "orderSummary": "סיכום הזמנה",
-      "placeOrder": "השלם הזמנה"
+      "placeOrder": "השלם הזמנה",
+      "yourOrder": "הזמנתך",
+      "product": "מוצר",
+      "subtotal": "סכום ביניים",
+      "total": "סכום כולל",
+      "paymentMessage": "ההזמנה תטופל מיד אחרי התשלום.",
+      "privacyMessage": "בהשלמת ההזמנה, אתה מסכים ל",
+      "privacyPolicy": "מדיניות פרטיות"
     },
     "banner": {
       "caption": "ריפוי טבעי",

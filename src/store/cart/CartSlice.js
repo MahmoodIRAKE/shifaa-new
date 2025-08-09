@@ -10,7 +10,7 @@ const initialState={
   areas:[],
   creditUrl:"",
   filledCustomer: undefined,
-  paymnetType:"credit",
+  paymentType:"credit",
   couponCode:"",
   couponDiscount:0,
 }
@@ -70,7 +70,7 @@ export const CartSlice = createSlice({
         state.creditUrl=action.payload;
       },
       setPaymentType:(state, action)=>{
-        state.paymnetType=action.payload;
+        state.paymentType=action.payload;
       },
       setFilledCustomer:(state, action)=>{
         state.filledCustomer=action.payload;

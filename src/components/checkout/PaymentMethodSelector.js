@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPaymentType } from "../../store/cart/CartSlice";
 import "./PaymentMethodSelector.css";
+import { selectCartPaymentType } from "../../store/cart/CartSelectores";
 
 const PaymentMethodSelector = () => {
   const dispatch = useDispatch();
-  const paymentType = useSelector((state) => state.cart.paymnetType);
+  const paymentType = useSelector(selectCartPaymentType);
   const [isAnimating, setIsAnimating] = useState(false);
+  console.log(paymentType);
+  useEffect(() => {
+    dispatch(setPaymentType('cash'));
+  }, [  ]);
 
   const handleSelectMethod = (value) => {
     if (paymentType !== value) {

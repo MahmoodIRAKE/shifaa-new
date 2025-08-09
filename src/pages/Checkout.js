@@ -47,12 +47,7 @@ const Checkout = () => {
               {/* Checkout Form */}
               <CheckoutForm />
             </div>
-            <div className="col-lg-5">
-              <OrderSummary 
-                cart={cart}
-                onPlaceOrder={handlePlaceOrder}
-              />
-            </div>
+    
           </div>
         </div>
       </div>
